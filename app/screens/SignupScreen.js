@@ -22,6 +22,7 @@ const SignupScreen = () => {
         onChangeText={(text) => onChangeTextName(text)}
         value={valueName}
         textContentType="name"
+        autoCapitalize="none"
         placeholderTextColor="grey"
         placeholder="Enter Name"
       />
@@ -30,6 +31,7 @@ const SignupScreen = () => {
         onChangeText={(text) => onChangeTextSurname(text)}
         value={valueSurname}
         textContentType="familyName"
+        autoCapitalize="none"
         placeholderTextColor="grey"
         placeholder="Enter Surname"
       />
@@ -38,6 +40,7 @@ const SignupScreen = () => {
         onChangeText={(text) => onChangeTextCity(text)}
         value={valueCity}
         textContentType="addressCity"
+        autoCapitalize="none"
         placeholderTextColor="grey"
         placeholder="Enter City"
       />
@@ -46,6 +49,7 @@ const SignupScreen = () => {
         onChangeText={(text) => onChangeTextEmail(text)}
         value={valueEmail}
         textContentType="emailAddress"
+        autoCapitalize="none"
         placeholderTextColor="grey"
         placeholder="Enter Email"
       />
@@ -54,6 +58,8 @@ const SignupScreen = () => {
         onChangeText={(text) => onChangeTextPassword(text)}
         value={valuePassword}
         textContentType="password"
+        secureTextEntry={true}
+        autoCapitalize="none"
         placeholderTextColor="grey"
         placeholder="Enter Password"
       />
@@ -62,12 +68,15 @@ const SignupScreen = () => {
         onChangeText={(text) => onChangeTextPasswordRepeat(text)}
         value={valuePasswordRepeat}
         textContentType="password"
+        secureTextEntry={true}
+        autoCapitalize="none"
         placeholderTextColor="grey"
         placeholder="Repeat Password"
       />
       <TouchableOpacity style={styles.buttonLogin} activeOpacity={0.5}>
         <Text style={styles.textInButton}>Sign Up</Text>
       </TouchableOpacity>
+      <Text>By clicking "Sign up" you're agreeing to the T&#38;C</Text>
     </View>
   );
 };
