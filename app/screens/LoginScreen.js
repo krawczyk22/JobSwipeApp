@@ -8,8 +8,8 @@ import {
 } from "react-native";
 
 const WelcomeScreen = ({ navigation }) => {
-  const [valueLogin, onChangeTextLogin] = React.useState("");
-  const [valuePassword, onChangeTextPassword] = React.useState("");
+  const [valueLogin, onChangeTextLogin] = React.useState(null);
+  const [valuePassword, onChangeTextPassword] = React.useState(null);
 
   return (
     <View style={styles.container}>
@@ -35,14 +35,20 @@ const WelcomeScreen = ({ navigation }) => {
         placeholder="Enter Password"
       />
       <TouchableOpacity
-        style={styles.buttonLogin}
+        style={
+          valueLogin && valuePassword
+            ? styles.buttonLogin
+            : styles.buttonLoginDisabled
+        }
         activeOpacity={0.5}
         onPress={() => navigation.push("Jobs")}
       >
         <Text style={styles.textInButton}>Login</Text>
       </TouchableOpacity>
-      <Text>Sign up with one of our partners</Text>
-      <Text>or create an account</Text>
+      <View style={styles.box}>
+        <Text>Sign up with one of our partners</Text>
+        <Text>or create an account</Text>
+      </View>
     </View>
   );
 };
@@ -63,20 +69,30 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     borderWidth: 0,
     marginLeft: 10,
-    bottom: 60,
     padding: 10,
     margin: 10,
   },
   buttonLogin: {
     width: 200,
     height: 70,
-    bottom: 40,
     backgroundColor: "#00BCD4",
     borderRadius: 25,
     borderWidth: 0,
     borderColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    margin: 10,
+  },
+  buttonLoginDisabled: {
+    width: 200,
+    height: 70,
+    backgroundColor: "#c4cecf",
+    borderRadius: 25,
+    borderWidth: 0,
+    borderColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 10,
   },
   textInButton: {
     color: "#fff",
@@ -85,7 +101,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 40,
     padding: 10,
-    bottom: 60,
+  },
+  box: {
+    justifyContent: "flex-start",
+    alignItems: "center",
+    margin: 10,
   },
 });
 
