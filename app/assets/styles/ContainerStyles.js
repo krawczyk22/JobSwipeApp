@@ -23,6 +23,7 @@ export default StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     margin: 10,
+    paddingBottom: 40,
   },
   TC: {
     flexDirection: "row",

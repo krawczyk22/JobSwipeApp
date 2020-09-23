@@ -86,12 +86,28 @@ const SignupScreen = () => {
       </View>
       <TouchableOpacity
         style={
-          toggleCheckbox && valueName && valueSurname && valueCity
+          toggleCheckbox &&
+          valueName &&
+          valueSurname &&
+          valueCity &&
+          valueEmail &&
+          valuePassword &&
+          valuePasswordRepeat
             ? ButtonStyles.buttonLogin
             : ButtonStyles.buttonLoginDisabled
         }
         activeOpacity={0.5}
-        disabled={!toggleCheckbox}
+        disabled={
+          !(
+            toggleCheckbox &&
+            valueName &&
+            valueSurname &&
+            valueCity &&
+            valueEmail &&
+            valuePassword &&
+            valuePasswordRepeat
+          )
+        }
       >
         <Text style={ButtonStyles.textInButton}>Sign Up</Text>
       </TouchableOpacity>
