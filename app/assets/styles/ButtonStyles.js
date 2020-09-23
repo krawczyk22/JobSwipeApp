@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-  button: {
+  buttonWelcome: {
     width: 150,
     height: 150,
     backgroundColor: "#00BCD4",

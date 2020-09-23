@@ -12,7 +12,7 @@ const WelcomeScreen = ({ navigation }) => {
         Welcome to the place where you'll find your dream job.
       </Text>
       <TouchableOpacity
-        style={ButtonStyles.button}
+        style={ButtonStyles.buttonWelcome}
         activeOpacity={0.5}
         onPress={() => navigation.push("Log in")}
       >

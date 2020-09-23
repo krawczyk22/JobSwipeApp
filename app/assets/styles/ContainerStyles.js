@@ -19,7 +19,7 @@ export default StyleSheet.create({
     padding: 10,
     margin: 10,
   },
-  box: {
+  boxSignup: {
     justifyContent: "flex-start",
     alignItems: "center",
     margin: 10,

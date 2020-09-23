@@ -42,7 +42,7 @@ const WelcomeScreen = ({ navigation }) => {
       >
         <Text style={ButtonStyles.textInButton}>Login</Text>
       </TouchableOpacity>
-      <View style={ContainerStyles.box}>
+      <View style={ContainerStyles.boxSignup}>
         <Text>Sign up with one of our partners</Text>
         <Text>or create an account</Text>
       </View>
