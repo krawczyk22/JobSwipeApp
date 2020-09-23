@@ -1,60 +1,25 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  TextInput,
-} from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
+import ContainerStyles from "../assets/styles/ContainerStyles.js";
+import ButtonStyles from "../assets/styles/ButtonStyles.js";
+import TextStyles from "../assets/styles/TextStyles.js";
 
 const WelcomeScreen = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Job Swiper</Text>
-      <Text style={styles.description}>
+    <View style={ContainerStyles.container}>
+      <Text style={TextStyles.title}>Job Swiper</Text>
+      <Text style={TextStyles.description}>
         Welcome to the place where you'll find your dream job.
       </Text>
       <TouchableOpacity
-        style={styles.button}
+        style={ButtonStyles.button}
         activeOpacity={0.5}
         onPress={() => navigation.push("Log in")}
       >
-        <Text style={styles.textInButton}>Let's go</Text>
+        <Text style={ButtonStyles.textInButton}>Let's go</Text>
       </TouchableOpacity>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#E8EDFF",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 40,
-  },
-  button: {
-    width: 150,
-    height: 150,
-    backgroundColor: "#00BCD4",
-    borderRadius: 75,
-    borderWidth: 1,
-    borderColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 40,
-    padding: 10,
-  },
-  description: {
-    fontSize: 25,
-    paddingBottom: 20,
-  },
-  textInButton: {
-    color: "#fff",
-    textAlign: "center",
-  },
-});
 
 export default WelcomeScreen;

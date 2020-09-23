@@ -1,19 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
+import ContainerStyles from "../assets/styles/ContainerStyles.js";
 
-export default function App() {
+export default function FavouritesScreen() {
   return (
-    <View style={styles.container}>
+    <View style={ContainerStyles.container}>
       <Text>Favourites</Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#E8EDFF",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

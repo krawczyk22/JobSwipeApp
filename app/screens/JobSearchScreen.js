@@ -1,19 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
+import ContainerStyles from "../assets/styles/ContainerStyles.js";
 
-export default function App() {
+export default function JobSearchScreen() {
   return (
-    <View style={styles.container}>
+    <View style={ContainerStyles.container}>
       <Text>Job Search</Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#E8EDFF",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
