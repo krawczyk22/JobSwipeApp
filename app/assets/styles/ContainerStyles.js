@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 
 export default StyleSheet.create({
   container: {
@@ -19,6 +19,17 @@ export default StyleSheet.create({
     padding: 10,
     margin: 10,
   },
+  textAreaJobSearch: {
+    height: 70,
+    width: 320,
+    borderColor: "black",
+    backgroundColor: "white",
+    borderRadius: 10,
+    borderWidth: 0,
+    marginLeft: 10,
+    padding: 10,
+    margin: 10,
+  },
   boxSignup: {
     justifyContent: "flex-start",
     alignItems: "center",
@@ -29,5 +40,9 @@ export default StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
+  },
+  mapStyle: {
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
   },
 });

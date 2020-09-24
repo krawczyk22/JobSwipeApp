@@ -34,7 +34,7 @@ export default StyleSheet.create({
     margin: 10,
   },
   buttonLoginThirdParty: {
-    width: 280,
+    width: 310,
     height: 40,
     borderRadius: 2,
     borderWidth: 0,
@@ -44,7 +44,7 @@ export default StyleSheet.create({
     margin: 5,
   },
   buttonLoginThirdPartyDisabled: {
-    width: 280,
+    width: 310,
     height: 40,
     backgroundColor: "#c4cecf",
     borderRadius: 2,
@@ -53,6 +53,17 @@ export default StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     margin: 5,
+  },
+  buttonSearchMap: {
+    width: 300,
+    height: 70,
+    backgroundColor: "#00BCD4",
+    borderRadius: 5,
+    borderWidth: 0,
+    borderColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 10,
   },
   textInButton: {
     color: "#fff",
