@@ -36,14 +36,24 @@ export default function MapScreen() {
         style={[ContainerStyles.mapStyle, { top: 60 }]}
         loadingEnabled={true}
         region={{
-          latitude: location.coords.latitude,
-          longitude: location.coords.longitude,
-          //latitude: 52.4862,
-          //longitude: -1.8904,
+          //latitude: location.coords.latitude,
+          //longitude: location.coords.longitude,
+          latitude: 52.4862,
+          longitude: -1.8904,
           latitudeDelta: 0.1,
           longitudeDelta: 0.1,
         }}
-      />
+      >
+        <MapView.Marker
+          coordinate={{
+            //latitude: location.coords.latitude,
+            //longitude: location.coords.longitude,
+            latitude: 52.4862,
+            longitude: -1.8904,
+          }}
+          title={"I'm here"}
+        />
+      </MapView>
       <TextInput
         style={[ContainerStyles.textAreaJobSearch, { bottom: 720 }]}
         onChangeText={(text) => onChangeTextJob(text)}
