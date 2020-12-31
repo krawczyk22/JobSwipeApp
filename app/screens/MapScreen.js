@@ -4,7 +4,6 @@ import * as Location from "expo-location";
 import { Text, TouchableOpacity, TextInput, SafeAreaView } from "react-native";
 import ContainerStyles from "../assets/styles/ContainerStyles.js";
 import ButtonStyles from "../assets/styles/ButtonStyles.js";
-import TextStyles from "../assets/styles/TextStyles.js";
 
 export default function MapScreen() {
   const [valueJob, onChangeTextJob] = React.useState(null);
@@ -35,7 +34,7 @@ export default function MapScreen() {
       <MapView
         style={[ContainerStyles.mapStyle, { top: 60 }]}
         loadingEnabled={true}
-        region={{
+        initialRegion={{
           //latitude: location.coords.latitude,
           //longitude: location.coords.longitude,
           latitude: 52.4862,
