@@ -28,41 +28,37 @@ const JobSearchScreen = () => {
       {isLoading ? (
         <ActivityIndicator />
       ) : (
-        <FlatList
-          data={data}
-          keyExtractor={({ id }, index) => id}
-          renderItem={({ item }) => (
-            <Swiper
-              cards={item.title}
-              renderCard={(card) => {
-                return (
-                  <View style={CardStyles.card}>
-                    <Text style={CardStyles.text}>{card}</Text>
-                  </View>
-                );
-              }}
-              onSwiped={(cardIndex) => {
-                console.log(cardIndex);
-              }}
-              onSwipedAll={() => {
-                console.log("onSwipedAll");
-              }}
-              cardIndex={0}
-              backgroundColor={"#E8EDFF"}
-              stackSize={3}
-            >
-              <Button
-                onPress={() => {
-                  console.log("oulala");
-                }}
-                title="Press me"
-              >
-                You can press me
-              </Button>
-            </Swiper>
-            //<Text>{item.title}, {item.releaseYear}</Text>
-          )}
-        />
+        <Swiper
+          cards={data}
+          renderCard={(card) => {
+            return (
+              <View style={CardStyles.card}>
+                <Text style={CardStyles.text}>
+                  {card.id}, {card.title}, {card.releaseYear}
+                </Text>
+              </View>
+            );
+          }}
+          onSwiped={(cardIndex) => {
+            console.log(cardIndex);
+          }}
+          onSwipedAll={() => {
+            console.log("onSwipedAll");
+          }}
+          cardIndex={0}
+          backgroundColor={"#E8EDFF"}
+          stackSize={3}
+        >
+          <Button
+            onPress={() => {
+              console.log("oulala");
+            }}
+            title="Press me"
+          >
+            You can press me
+          </Button>
+        </Swiper>
+        //<Text>{item.title}, {item.releaseYear}</Text>
       )}
     </SafeAreaView>
   );
