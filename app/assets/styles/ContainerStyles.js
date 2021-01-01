@@ -38,7 +38,12 @@ export default StyleSheet.create({
   },
   TC: {
     flexDirection: "row",
-    justifyContent: "flex-start",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  JobCheckBoxes: {
+    flexDirection: "column",
+    justifyContent: "center",
     alignItems: "center",
   },
   mapStyle: {

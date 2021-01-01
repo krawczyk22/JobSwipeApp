@@ -61,7 +61,6 @@ const JobSearchScreen = () => {
           backgroundColor={"#E8EDFF"}
           stackSize={3}
         ></Swiper>
-        //<Text>{item.title}, {item.releaseYear}</Text>
       )}
     </SafeAreaView>
   );

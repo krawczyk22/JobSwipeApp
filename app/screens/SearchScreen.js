@@ -52,7 +52,7 @@ const SearchScreen = () => {
         placeholderTextColor="grey"
         placeholder="Enter Max. Salary"
       />
-      <View style={ContainerStyles.TC}>
+      <View style={ContainerStyles.JobCheckBoxes}>
         <CheckBox
           checked={valuePermanent}
           onPress={() => onPermanent(!valuePermanent)}
