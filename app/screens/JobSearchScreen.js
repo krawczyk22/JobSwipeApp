@@ -4,13 +4,31 @@ import ContainerStyles from "../assets/styles/ContainerStyles.js";
 import CardStyles from "../assets/styles/CardStyles.js";
 import Swiper from "react-native-deck-swiper";
 
-const JobSearchScreen = () => {
+const JobSearchScreen = ({ route, navigation }) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const base64 = require("base-64");
 
-  let url =
-    "https://www.reed.co.uk/api/1.0/search?keywords=accountant&location=london&distancefromlocation=15";
+  /*const { valueKeyWords, valueDistanceFromLocation, 
+    valueMinSalary, valueMaxSalary, valuePermanent, valueContract, 
+    valueTemp, valueFullTime, valuePartTime } = route.params;
+  */
+
+  //example values
+  const valueKeyWords = "teacher";
+  const valueDistanceFromLocation = 10;
+  const valueMinSalary = 10000;
+  const valueMaxSalary = 1000000;
+  const valuePermanent = true;
+  const valueContract = true;
+  const valueTemp = true;
+  const valueFullTime = true;
+  const valuePartTime = true;
+
+  let url = `https://www.reed.co.uk/api/1.0/search?keywords=${valueKeyWords}&
+  location=london&distancefromlocation=${valueDistanceFromLocation}$permanent=${valuePermanent}&
+  contract=${valueContract}&temp=${valueTemp}$partTime=${valuePartTime}&fullTime=${valueFullTime}&
+  minimumSalary=${valueMinSalary}&maximumSalary=${valueMaxSalary}`;
   let username = "4e067145-304a-4839-8087-efe68077a33a";
   let password = "";
 
@@ -26,6 +44,7 @@ const JobSearchScreen = () => {
       .finally(() => setLoading(false));
   }, []);
   console.log(data);
+  console.log(url);
 
   return (
     <SafeAreaView style={ContainerStyles.container}>

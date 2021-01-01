@@ -114,6 +114,10 @@ export default function App() {
           name="Jobs"
           children={createBottomTabsAuthorised}
         ></Stack.Screen>
+        <Stack.Screen
+          name="JobSearch"
+          children={JobSearchScreen}
+        ></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );

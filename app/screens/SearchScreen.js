@@ -1,10 +1,11 @@
 import React from "react";
-import { Text, View, TextInput } from "react-native";
+import { Text, View, TextInput, TouchableOpacity } from "react-native";
 import { CheckBox } from "react-native-elements";
 import ContainerStyles from "../assets/styles/ContainerStyles.js";
 import TextStyles from "../assets/styles/TextStyles.js";
+import ButtonStyles from "../assets/styles/ButtonStyles.js";
 
-const SearchScreen = () => {
+const SearchScreen = ({ navigation }) => {
   const [valueKeyWords, onChangeKeyWords] = React.useState(null);
   const [valueDistanceFromLocation, onDistanceFromLocation] = React.useState(
     null
@@ -84,6 +85,26 @@ const SearchScreen = () => {
         />
         <Text>Part Time</Text>
       </View>
+      <TouchableOpacity
+        style={ButtonStyles.buttonSearchMap}
+        activeOpacity={0.8}
+        onPress={() => {
+          /* 1. Navigate to the Details route with params */
+          navigation.navigate("JobSearch", {
+            valueKeyWords: valueKeyWords,
+            valueDistanceFromLocation: valueDistanceFromLocation,
+            valueMinSalary: valueMinSalary,
+            valueMaxSalary: valueMaxSalary,
+            valuePermanent: valuePermanent,
+            valueContract: valueContract,
+            valueTemp: valueTemp,
+            valueFullTime: valueFullTime,
+            valuePartTime: valuePartTime,
+          });
+        }}
+      >
+        <Text style={ButtonStyles.textInButton}>Search jobs here</Text>
+      </TouchableOpacity>
     </View>
   );
 };

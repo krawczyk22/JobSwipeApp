@@ -31,7 +31,7 @@ export default function MapScreen() {
   return (
     <SafeAreaView style={ContainerStyles.container}>
       <MapView
-        style={[ContainerStyles.mapStyle, { top: 60 }]}
+        style={ContainerStyles.mapStyle}
         loadingEnabled={true}
         initialRegion={{
           //latitude: location.coords.latitude,
