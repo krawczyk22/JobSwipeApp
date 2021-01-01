@@ -10,6 +10,7 @@ import LoginScreen from "./app/screens/LoginScreen";
 import FavouritesScreen from "./app/screens/FavouritesScreen";
 import MapScreen from "./app/screens/MapScreen";
 import JobSearchScreen from "./app/screens/JobSearchScreen";
+import SearchScreen from "./app/screens/SearchScreen";
 
 const Stack = createStackNavigator();
 const MaterialBottomTabs = createMaterialBottomTabNavigator();
@@ -49,6 +50,20 @@ const createBottomTabsAuthorised = () => (
     inactiveColor="black"
     barStyle={{ backgroundColor: "#00BCD4" }}
   >
+    <MaterialBottomTabs.Screen
+      name="Search"
+      component={SearchScreen}
+      options={{
+        tabBarLabel: "Search",
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons
+            name="format-color-highlight"
+            color={color}
+            size={26}
+          />
+        ),
+      }}
+    ></MaterialBottomTabs.Screen>
     <MaterialBottomTabs.Screen
       name="Map"
       component={MapScreen}
