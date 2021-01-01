@@ -11,7 +11,7 @@ export default StyleSheet.create({
   },
   text: {
     textAlign: "center",
-    fontSize: 50,
+    fontSize: 20,
     backgroundColor: "transparent",
   },
 });
