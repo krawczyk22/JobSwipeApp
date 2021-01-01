@@ -1,12 +1,11 @@
 import React from "react";
 import MapView from "react-native-maps";
 import * as Location from "expo-location";
-import { Text, TouchableOpacity, TextInput, SafeAreaView } from "react-native";
+import { Text, TouchableOpacity, SafeAreaView } from "react-native";
 import ContainerStyles from "../assets/styles/ContainerStyles.js";
 import ButtonStyles from "../assets/styles/ButtonStyles.js";
 
 export default function MapScreen() {
-  const [valueJob, onChangeTextJob] = React.useState(null);
   const [location, setLocation] = React.useState(null);
   const [errorMsg, setErrorMsg] = React.useState(null);
 
@@ -53,15 +52,6 @@ export default function MapScreen() {
           title={"I'm here"}
         />
       </MapView>
-      <TextInput
-        style={[ContainerStyles.textAreaJobSearch, { bottom: 720 }]}
-        onChangeText={(text) => onChangeTextJob(text)}
-        value={valueJob}
-        textContentType="jobTitle"
-        autoCapitalize="none"
-        placeholderTextColor="grey"
-        placeholder="Enter job title, keywords, or company"
-      />
       <TouchableOpacity
         style={[ButtonStyles.buttonSearchMap, { bottom: 170 }]}
         activeOpacity={0.8}

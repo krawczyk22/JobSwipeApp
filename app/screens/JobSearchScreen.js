@@ -37,12 +37,11 @@ const JobSearchScreen = () => {
           renderCard={(card) => {
             return (
               <View style={CardStyles.card}>
-                <Text style={CardStyles.text}>
-                  {card.employerName}
-                  {card.jobTitle}
-                  {card.locationName}
-                  {card.jobDescription}
-                </Text>
+                <Text style={CardStyles.text}></Text>
+                <Text style={CardStyles.text}>{card.employerName}</Text>
+                <Text style={CardStyles.text}>{card.jobTitle}</Text>
+                <Text style={CardStyles.text}>{card.locationName}</Text>
+                <Text style={CardStyles.text}>{card.jobDescription}</Text>
               </View>
             );
           }}
