@@ -65,6 +65,17 @@ export default StyleSheet.create({
     justifyContent: "center",
     margin: 10,
   },
+  buttonGoBack: {
+    width: 50,
+    height: 50,
+    backgroundColor: "#00BCD4",
+    borderRadius: 5,
+    borderWidth: 0,
+    borderColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 10,
+  },
   textInButton: {
     color: "#fff",
     textAlign: "center",

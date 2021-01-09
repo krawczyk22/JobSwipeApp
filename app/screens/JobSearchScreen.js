@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import MapView from "react-native-maps";
-import { Text, SafeAreaView, View, ActivityIndicator } from "react-native";
+import {
+  Text,
+  SafeAreaView,
+  View,
+  ActivityIndicator,
+  TouchableOpacity,
+} from "react-native";
 import ContainerStyles from "../assets/styles/ContainerStyles.js";
+import ButtonStyles from "../assets/styles/ButtonStyles.js";
 import CardStyles from "../assets/styles/CardStyles.js";
 import Swiper from "react-native-deck-swiper";
 
@@ -105,7 +112,15 @@ const JobSearchScreen = ({ route, navigation }) => {
           cardIndex={0}
           backgroundColor={"#E8EDFF"}
           stackSize={3}
-        ></Swiper>
+        >
+          <TouchableOpacity
+            style={ButtonStyles.buttonGoBack}
+            activeOpacity={0.5}
+            onPress={() => navigation.goBack()}
+          >
+            <Text style={ButtonStyles.textInButton}>Back</Text>
+          </TouchableOpacity>
+        </Swiper>
       )}
     </SafeAreaView>
   );
