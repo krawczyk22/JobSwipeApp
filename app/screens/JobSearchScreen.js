@@ -43,6 +43,7 @@ const JobSearchScreen = ({ route, navigation }) => {
       .catch((error) => console.error(error))
       .finally(() => setLoadingReed(false));
   }, []);
+
   /*
   useEffect(() => {
     fetch(

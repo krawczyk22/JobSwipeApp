@@ -4,6 +4,7 @@ import { CheckBox } from "react-native-elements";
 import ContainerStyles from "../assets/styles/ContainerStyles.js";
 import ButtonStyles from "../assets/styles/ButtonStyles.js";
 import TextStyles from "../assets/styles/TextStyles.js";
+import ThirdPartyButton from "../components/ThirdPartyButton.js";
 
 const WelcomeScreen = ({ navigation }) => {
   const [valueLogin, onChangeTextLogin] = React.useState(null);
@@ -57,48 +58,21 @@ const WelcomeScreen = ({ navigation }) => {
         />
         <Text>I agree to the T&#38;C of the Job Swiper</Text>
       </View>
-      <TouchableOpacity
-        style={
-          toggleCheckbox
-            ? [
-                ButtonStyles.buttonLoginThirdParty,
-                { backgroundColor: "#39549D" },
-              ]
-            : ButtonStyles.buttonLoginThirdPartyDisabled
-        }
-        activeOpacity={0.5}
-        disabled={!toggleCheckbox}
-      >
-        <Text style={ButtonStyles.textInButton}>Log in with Facebook</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={
-          toggleCheckbox
-            ? [
-                ButtonStyles.buttonLoginThirdParty,
-                { backgroundColor: "#D44638" },
-              ]
-            : ButtonStyles.buttonLoginThirdPartyDisabled
-        }
-        activeOpacity={0.5}
-        disabled={!toggleCheckbox}
-      >
-        <Text style={ButtonStyles.textInButton}>Log in with Gmail</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={
-          toggleCheckbox
-            ? [
-                ButtonStyles.buttonLoginThirdParty,
-                { backgroundColor: "#49A5FB" },
-              ]
-            : ButtonStyles.buttonLoginThirdPartyDisabled
-        }
-        activeOpacity={0.5}
-        disabled={!toggleCheckbox}
-      >
-        <Text style={ButtonStyles.textInButton}>Log in with Twitter</Text>
-      </TouchableOpacity>
+      <ThirdPartyButton
+        toggleCheckbox={toggleCheckbox}
+        thirdParty={"Facebook"}
+        colour={"#39549D"}
+      />
+      <ThirdPartyButton
+        toggleCheckbox={toggleCheckbox}
+        thirdParty={"Gmail"}
+        colour={"#D44638"}
+      />
+      <ThirdPartyButton
+        toggleCheckbox={toggleCheckbox}
+        thirdParty={"Twitter"}
+        colour={"#49A5FB"}
+      />
     </View>
   );
 };
