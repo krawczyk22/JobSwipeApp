@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, SafeAreaView } from "react-native";
 import ContainerStyles from "../assets/styles/ContainerStyles.js";
 
 const FavouritesScreen = () => {
+  const [isLoading, setLoading] = useState(true);
   return (
     <SafeAreaView style={ContainerStyles.container}>
-      <Text>Favourites</Text>
+      {isLoading ? (
+        <Text>You have no jobs saved!</Text>
+      ) : (
+        <Text>Favourites</Text>
+      )}
     </SafeAreaView>
   );
 };

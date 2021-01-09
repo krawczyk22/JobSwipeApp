@@ -1,10 +1,10 @@
 import React from "react";
-import { Text, TouchableOpacity, View, TextInput } from "react-native";
+import { Text, View, TextInput } from "react-native";
 import { CheckBox } from "react-native-elements";
 import ContainerStyles from "../assets/styles/ContainerStyles.js";
-import ButtonStyles from "../assets/styles/ButtonStyles.js";
 import TextStyles from "../assets/styles/TextStyles.js";
 import ThirdPartyButton from "../components/ThirdPartyButton.js";
+import LoginButton from "../components/LoginButton.js";
 
 const WelcomeScreen = ({ navigation }) => {
   const [valueLogin, onChangeTextLogin] = React.useState(null);
@@ -34,18 +34,11 @@ const WelcomeScreen = ({ navigation }) => {
         placeholderTextColor="grey"
         placeholder="Enter Password"
       />
-      <TouchableOpacity
-        style={
-          valueLogin && valuePassword
-            ? ButtonStyles.buttonLogin
-            : ButtonStyles.buttonLoginDisabled
-        }
-        activeOpacity={0.5}
-        onPress={() => navigation.push("Jobs")}
-        disabled={!(valueLogin && valuePassword)}
-      >
-        <Text style={ButtonStyles.textInButton}>Login</Text>
-      </TouchableOpacity>
+      <LoginButton
+        navigation={navigation}
+        valueLogin={valueLogin}
+        valuePassword={valuePassword}
+      />
       <View style={ContainerStyles.boxSignup}>
         <Text>Sign up with one of our partners</Text>
         <Text>or create an account</Text>
