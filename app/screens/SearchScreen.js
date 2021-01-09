@@ -18,6 +18,19 @@ const SearchScreen = ({ navigation }) => {
   const [valueFullTime, onChangeFullTime] = React.useState(true);
   const [valuePartTime, onChangePartTime] = React.useState(true);
 
+  const checkNumberInput = () => {
+    if (
+      Number.isInteger(Number(valueMinSalary)) &&
+      Number.isInteger(Number(valueMaxSalary)) &&
+      Number.isInteger(Number(valueDistanceFromLocation))
+    ) {
+      return true;
+    } else {
+      alert("The numeric fields must cointain integers!");
+      return false;
+    }
+  };
+
   return (
     <View style={ContainerStyles.container}>
       <Text style={TextStyles.title}>Enter Job Information</Text>
@@ -89,17 +102,19 @@ const SearchScreen = ({ navigation }) => {
         style={ButtonStyles.buttonSearchMap}
         activeOpacity={0.8}
         onPress={() => {
-          navigation.navigate("JobSearch", {
-            valueKeyWords: valueKeyWords,
-            valueDistanceFromLocation: valueDistanceFromLocation,
-            valueMinSalary: valueMinSalary,
-            valueMaxSalary: valueMaxSalary,
-            valuePermanent: valuePermanent,
-            valueContract: valueContract,
-            valueTemp: valueTemp,
-            valueFullTime: valueFullTime,
-            valuePartTime: valuePartTime,
-          });
+          if (checkNumberInput()) {
+            navigation.navigate("JobSearch", {
+              valueKeyWords: valueKeyWords,
+              valueDistanceFromLocation: valueDistanceFromLocation,
+              valueMinSalary: valueMinSalary,
+              valueMaxSalary: valueMaxSalary,
+              valuePermanent: valuePermanent,
+              valueContract: valueContract,
+              valueTemp: valueTemp,
+              valueFullTime: valueFullTime,
+              valuePartTime: valuePartTime,
+            });
+          }
         }}
       >
         <Text style={ButtonStyles.textInButton}>Search jobs here</Text>

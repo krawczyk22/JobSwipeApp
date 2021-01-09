@@ -23,18 +23,7 @@ const JobSearchScreen = ({ route, navigation }) => {
     valueFullTime,
     valuePartTime,
   } = route.params;
-  //example values
-  /*
-  const valueKeyWords = "teacher";
-  const valueDistanceFromLocation = 1;
-  const valueMinSalary = 10000;
-  const valueMaxSalary = 1000000;
-  const valuePermanent = true;
-  const valueContract = true;
-  const valueTemp = true;
-  const valueFullTime = true;
-  const valuePartTime = true;
-*/
+
   let urlReed = `https://www.reed.co.uk/api/1.0/search?keywords=${valueKeyWords}&
   location=birmingham&distancefromlocation=${valueDistanceFromLocation}$permanent=${valuePermanent}&
   contract=${valueContract}&temp=${valueTemp}$partTime=${valuePartTime}&fullTime=${valueFullTime}&
