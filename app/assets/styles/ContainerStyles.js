@@ -47,7 +47,8 @@ export default StyleSheet.create({
     alignItems: "center",
   },
   mapStyle: {
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
+    width: "auto",
+    height: "40%",
+    zIndex: -1,
   },
 });

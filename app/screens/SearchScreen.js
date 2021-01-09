@@ -89,7 +89,6 @@ const SearchScreen = ({ navigation }) => {
         style={ButtonStyles.buttonSearchMap}
         activeOpacity={0.8}
         onPress={() => {
-          /* 1. Navigate to the Details route with params */
           navigation.navigate("JobSearch", {
             valueKeyWords: valueKeyWords,
             valueDistanceFromLocation: valueDistanceFromLocation,

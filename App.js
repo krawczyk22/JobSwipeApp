@@ -8,7 +8,6 @@ import WelcomeScreen from "./app/screens/WelcomeScreen";
 import SignupScreen from "./app/screens/SignupScreen";
 import LoginScreen from "./app/screens/LoginScreen";
 import FavouritesScreen from "./app/screens/FavouritesScreen";
-import MapScreen from "./app/screens/MapScreen";
 import JobSearchScreen from "./app/screens/JobSearchScreen";
 import SearchScreen from "./app/screens/SearchScreen";
 
@@ -65,26 +64,6 @@ const createBottomTabsAuthorised = () => (
       }}
     ></MaterialBottomTabs.Screen>
     <MaterialBottomTabs.Screen
-      name="Map"
-      component={MapScreen}
-      options={{
-        tabBarLabel: "Map",
-        tabBarIcon: ({ color }) => (
-          <MaterialCommunityIcons name="pin" color={color} size={26} />
-        ),
-      }}
-    ></MaterialBottomTabs.Screen>
-    <MaterialBottomTabs.Screen
-      name="Jobs"
-      component={JobSearchScreen}
-      options={{
-        tabBarLabel: "Jobs",
-        tabBarIcon: ({ color }) => (
-          <MaterialCommunityIcons name="folder" color={color} size={26} />
-        ),
-      }}
-    ></MaterialBottomTabs.Screen>
-    <MaterialBottomTabs.Screen
       name="Favourites"
       component={FavouritesScreen}
       options={{
@@ -116,7 +95,7 @@ export default function App() {
         ></Stack.Screen>
         <Stack.Screen
           name="JobSearch"
-          children={JobSearchScreen}
+          component={JobSearchScreen}
         ></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

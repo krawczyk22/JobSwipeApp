@@ -1,22 +1,32 @@
 import React, { useEffect, useState } from "react";
+import MapView from "react-native-maps";
 import { Text, SafeAreaView, View, ActivityIndicator } from "react-native";
 import ContainerStyles from "../assets/styles/ContainerStyles.js";
 import CardStyles from "../assets/styles/CardStyles.js";
 import Swiper from "react-native-deck-swiper";
 
 const JobSearchScreen = ({ route, navigation }) => {
-  const [isLoading, setLoading] = useState(true);
+  const [isLoadingReed, setLoadingReed] = useState(true);
+  const [isLoadingGeo, setLoadingGeo] = useState(true);
   const [data, setData] = useState([]);
+  const [loglat, setLogLat] = useState([]);
   const base64 = require("base-64");
 
-  /*const { valueKeyWords, valueDistanceFromLocation, 
-    valueMinSalary, valueMaxSalary, valuePermanent, valueContract, 
-    valueTemp, valueFullTime, valuePartTime } = route.params;
-  */
-
+  const {
+    valueKeyWords,
+    valueDistanceFromLocation,
+    valueMinSalary,
+    valueMaxSalary,
+    valuePermanent,
+    valueContract,
+    valueTemp,
+    valueFullTime,
+    valuePartTime,
+  } = route.params;
   //example values
+  /*
   const valueKeyWords = "teacher";
-  const valueDistanceFromLocation = 10;
+  const valueDistanceFromLocation = 1;
   const valueMinSalary = 10000;
   const valueMaxSalary = 1000000;
   const valuePermanent = true;
@@ -24,31 +34,46 @@ const JobSearchScreen = ({ route, navigation }) => {
   const valueTemp = true;
   const valueFullTime = true;
   const valuePartTime = true;
-
-  let url = `https://www.reed.co.uk/api/1.0/search?keywords=${valueKeyWords}&
-  location=london&distancefromlocation=${valueDistanceFromLocation}$permanent=${valuePermanent}&
+*/
+  let urlReed = `https://www.reed.co.uk/api/1.0/search?keywords=${valueKeyWords}&
+  location=birmingham&distancefromlocation=${valueDistanceFromLocation}$permanent=${valuePermanent}&
   contract=${valueContract}&temp=${valueTemp}$partTime=${valuePartTime}&fullTime=${valueFullTime}&
   minimumSalary=${valueMinSalary}&maximumSalary=${valueMaxSalary}`;
-  let username = "4e067145-304a-4839-8087-efe68077a33a";
-  let password = "";
+  let usernameReed = "4e067145-304a-4839-8087-efe68077a33a";
+  let passwordReed = "";
 
   useEffect(() => {
-    fetch(url, {
+    fetch(urlReed, {
       headers: {
-        Authorization: "Basic " + base64.encode(username + ":" + password),
+        Authorization:
+          "Basic " + base64.encode(usernameReed + ":" + passwordReed),
       },
     })
       .then((response) => response.json())
       .then((json) => setData(json.results))
       .catch((error) => console.error(error))
-      .finally(() => setLoading(false));
+      .finally(() => setLoadingReed(false));
   }, []);
-  console.log(data);
-  console.log(url);
+  /*
+  useEffect(() => {
+    fetch(
+      `http://open.mapquestapi.com/geocoding/v1/address?key=RcaRGE3AeecDHhGKCWDr8dolsC4kCsM5&location=${data.locationName},GB`,
+      {
+        method: "GET",
+      }
+    )
+      .then((response) => response.json())
+      .then((json) => setLogLat(json.results[0].locations[0].latLng))
+      .catch((error) => console.error(error))
+      .finally(() => setLoadingGeo(false));
+  }, []);
+*/
+  //console.log(data);
+  console.log(isLoadingReed);
 
   return (
     <SafeAreaView style={ContainerStyles.container}>
-      {isLoading ? (
+      {isLoadingReed ? (
         <ActivityIndicator />
       ) : (
         <Swiper
@@ -56,6 +81,18 @@ const JobSearchScreen = ({ route, navigation }) => {
           renderCard={(card) => {
             return (
               <View style={CardStyles.card}>
+                <MapView
+                  style={ContainerStyles.mapStyle}
+                  loadingEnabled={true}
+                  initialRegion={{
+                    //latitude: location.coords.latitude,
+                    //longitude: location.coords.longitude,
+                    latitude: 52.4862,
+                    longitude: -1.8904,
+                    latitudeDelta: 0.1,
+                    longitudeDelta: 0.1,
+                  }}
+                ></MapView>
                 <Text style={CardStyles.text}></Text>
                 <Text style={CardStyles.text}>{card.employerName}</Text>
                 <Text style={CardStyles.text}>{card.jobTitle}</Text>
