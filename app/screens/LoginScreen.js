@@ -29,7 +29,7 @@ const LoginScreen = ({ navigation }) => {
   };
 
   const onSignIn = (googleUser) => {
-    console.log("Google Auth Response", googleUser);
+    //console.log("Google Auth Response", googleUser);
     // We need to register an Observer on Firebase Auth to make sure auth is initialized.
     var unsubscribe = firebase.auth().onAuthStateChanged((firebaseUser) => {
       unsubscribe();
@@ -45,8 +45,15 @@ const LoginScreen = ({ navigation }) => {
         firebase
           .auth()
           .signInWithCredential(credential)
-          .then(() => {
-            console.log("User signed in");
+          .then((result) => {
+            console.log(result.user);
+            firebase
+              .database()
+              .ref("/users/" + result.user.uid)
+              .set({
+                gmail: result.user.email,
+                displayName: result.user.displayName,
+              });
           })
           .catch((error) => {
             // Handle Errors here.

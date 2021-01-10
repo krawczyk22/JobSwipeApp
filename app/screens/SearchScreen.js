@@ -1,9 +1,16 @@
 import React from "react";
-import { Text, View, TextInput, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  SafeAreaView,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
 import { CheckBox } from "react-native-elements";
 import ContainerStyles from "../assets/styles/ContainerStyles.js";
 import TextStyles from "../assets/styles/TextStyles.js";
 import ButtonStyles from "../assets/styles/ButtonStyles.js";
+import LogOutButton from "../components/LogOutButton.js";
 
 const SearchScreen = ({ navigation }) => {
   const [valueKeyWords, onChangeKeyWords] = React.useState(null);
@@ -32,7 +39,8 @@ const SearchScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={ContainerStyles.container}>
+    <SafeAreaView style={ContainerStyles.container}>
+      <LogOutButton />
       <Text style={TextStyles.title}>Enter Job Information</Text>
       <TextInput
         style={ContainerStyles.textArea}
@@ -119,7 +127,7 @@ const SearchScreen = ({ navigation }) => {
       >
         <Text style={ButtonStyles.textInButton}>Search jobs here</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 
