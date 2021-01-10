@@ -82,7 +82,7 @@ const JobCards = ({ data, navigation }) => {
       backgroundColor={"#E8EDFF"}
       stackSize={3}
     >
-      <ReturnButton navigation={navigation} text={"Back"} />
+      <ReturnButton navigation={navigation} />
     </Swiper>
   );
 };
