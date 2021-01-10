@@ -40,7 +40,7 @@ const SearchScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={ContainerStyles.container}>
-      <LogOutButton />
+      <LogOutButton navigation={navigation} />
       <Text style={TextStyles.title}>Enter Job Information</Text>
       <TextInput
         style={ContainerStyles.textArea}

@@ -13,7 +13,7 @@ const LoadingScreen = ({ navigation }) => {
       if (user) {
         navigation.push("Jobs");
       } else {
-        navigation.navigate("Log in");
+        navigation.push("Log in");
       }
     });
   };

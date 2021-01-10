@@ -8,7 +8,10 @@ const LogOutButton = ({ navigation }) => {
     <TouchableOpacity
       style={ButtonStyles.buttonGoBack}
       activeOpacity={0.5}
-      onPress={() => firebase.auth().signOut()}
+      onPress={() => {
+        firebase.auth().signOut();
+        navigation.push("loading");
+      }}
     >
       <Text style={ButtonStyles.textInButton}>Log Out</Text>
     </TouchableOpacity>
