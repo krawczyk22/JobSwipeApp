@@ -7,13 +7,20 @@ export default StyleSheet.create({
     borderWidth: 2,
     padding: 4,
     borderColor: "#E8E8E8",
-    justifyContent: "center",
     backgroundColor: "white",
   },
-  text: {
+  textHeader: {
     padding: 4,
+    fontSize: 30,
+    marginTop: 5,
     textAlign: "left",
-    fontSize: 20,
+    backgroundColor: "transparent",
+  },
+  textDescription: {
+    padding: 4,
+    fontSize: 18,
+    marginTop: 5,
+    textAlign: "left",
     backgroundColor: "transparent",
   },
 });

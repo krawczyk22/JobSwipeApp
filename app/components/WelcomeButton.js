@@ -7,7 +7,7 @@ const WelcomeButton = ({ navigation }) => {
     <TouchableOpacity
       style={ButtonStyles.buttonWelcome}
       activeOpacity={0.5}
-      onPress={() => navigation.push("Log in")}
+      onPress={() => navigation.push("loading")}
     >
       <Text style={ButtonStyles.textInButton}>Let's go</Text>
     </TouchableOpacity>

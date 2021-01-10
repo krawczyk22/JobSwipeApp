@@ -1,4 +1,5 @@
 import React from "react";
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
@@ -10,6 +11,11 @@ import LoginScreen from "./app/screens/LoginScreen";
 import FavouritesScreen from "./app/screens/FavouritesScreen";
 import JobSearchScreen from "./app/screens/JobSearchScreen";
 import SearchScreen from "./app/screens/SearchScreen";
+import LoadingScreen from "./app/screens/LoadingScreen";
+
+import * as firebase from "firebase";
+import firebaseConfig from "./config.js";
+firebase.initializeApp(firebaseConfig);
 
 const Stack = createStackNavigator();
 const MaterialBottomTabs = createMaterialBottomTabNavigator();
@@ -97,6 +103,7 @@ export default function App() {
           name="JobSearch"
           component={JobSearchScreen}
         ></Stack.Screen>
+        <Stack.Screen name="loading" component={LoadingScreen}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -66,10 +66,11 @@ export default StyleSheet.create({
     margin: 10,
   },
   buttonGoBack: {
-    width: 50,
+    width: 120,
     height: 50,
+    left: 10,
     backgroundColor: "#00BCD4",
-    borderRadius: 5,
+    borderRadius: 4,
     borderWidth: 0,
     borderColor: "#fff",
     alignItems: "center",

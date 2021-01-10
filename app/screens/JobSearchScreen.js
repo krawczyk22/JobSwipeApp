@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
-import MapView from "react-native-maps";
-import { Text, SafeAreaView, View, ActivityIndicator } from "react-native";
+import { SafeAreaView, ActivityIndicator, View } from "react-native";
 import ContainerStyles from "../assets/styles/ContainerStyles.js";
-import CardStyles from "../assets/styles/CardStyles.js";
-import Swiper from "react-native-deck-swiper";
-import ReturnButton from "../components/ReturnButton.js";
 import JobCards from "../components/JobCards.js";
 
 const JobSearchScreen = ({ route, navigation }) => {
@@ -46,26 +42,15 @@ const JobSearchScreen = ({ route, navigation }) => {
       .finally(() => setLoadingReed(false));
   }, []);
 
-  /*
-  useEffect(() => {
-    fetch(
-      `http://open.mapquestapi.com/geocoding/v1/address?key=RcaRGE3AeecDHhGKCWDr8dolsC4kCsM5&location=${data.locationName},GB`,
-      {
-        method: "GET",
-      }
-    )
-      .then((response) => response.json())
-      .then((json) => setLogLat(json.results[0].locations[0].latLng))
-      .catch((error) => console.error(error))
-      .finally(() => setLoadingGeo(false));
-  }, []);
-*/
-  //console.log(data);
-  console.log(isLoadingReed);
-
   return (
     <SafeAreaView style={ContainerStyles.container}>
-      {isLoadingReed ? <ActivityIndicator /> : <JobCards data={data} />}
+      {isLoadingReed ? (
+        <ActivityIndicator />
+      ) : (
+        <View style={{ height: "100%", width: "100%" }}>
+          <JobCards data={data} navigation={navigation} />
+        </View>
+      )}
     </SafeAreaView>
   );
 };
