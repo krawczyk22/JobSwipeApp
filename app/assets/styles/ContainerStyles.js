@@ -42,7 +42,7 @@ export default StyleSheet.create({
     alignItems: "center",
   },
   JobCheckBoxes: {
-    flexDirection: "column",
+    flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
   },

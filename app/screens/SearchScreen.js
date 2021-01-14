@@ -14,6 +14,7 @@ import LogOutButton from "../components/LogOutButton.js";
 
 const SearchScreen = ({ navigation }) => {
   const [valueKeyWords, onChangeKeyWords] = React.useState(null);
+  const [valueLocation, onChangeLocation] = React.useState(null);
   const [valueDistanceFromLocation, onDistanceFromLocation] = React.useState(
     null
   );
@@ -49,6 +50,14 @@ const SearchScreen = ({ navigation }) => {
         textContentType="jobTitle"
         placeholderTextColor="grey"
         placeholder="Enter Key Words"
+      />
+      <TextInput
+        style={ContainerStyles.textArea}
+        onChangeText={(text) => onChangeLocation(text)}
+        value={valueLocation}
+        textContentType="location"
+        placeholderTextColor="grey"
+        placeholder="Enter Location"
       />
       <TextInput
         style={ContainerStyles.textArea}
@@ -93,6 +102,8 @@ const SearchScreen = ({ navigation }) => {
           checkedColor="#00BCD4"
         />
         <Text>Temporary</Text>
+      </View>
+      <View style={ContainerStyles.JobCheckBoxes}>
         <CheckBox
           checked={valueFullTime}
           onPress={() => onChangeFullTime(!valueFullTime)}
@@ -113,6 +124,7 @@ const SearchScreen = ({ navigation }) => {
           if (checkNumberInput()) {
             navigation.navigate("JobSearch", {
               valueKeyWords: valueKeyWords,
+              valueLocation: valueLocation,
               valueDistanceFromLocation: valueDistanceFromLocation,
               valueMinSalary: valueMinSalary,
               valueMaxSalary: valueMaxSalary,

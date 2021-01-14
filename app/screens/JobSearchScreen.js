@@ -12,6 +12,7 @@ const JobSearchScreen = ({ route, navigation }) => {
 
   const {
     valueKeyWords,
+    valueLocation,
     valueDistanceFromLocation,
     valueMinSalary,
     valueMaxSalary,
@@ -23,8 +24,8 @@ const JobSearchScreen = ({ route, navigation }) => {
   } = route.params;
 
   let urlReed = `https://www.reed.co.uk/api/1.0/search?keywords=${valueKeyWords}&
-  location=birmingham&distancefromlocation=${valueDistanceFromLocation}$permanent=${valuePermanent}&
-  contract=${valueContract}&temp=${valueTemp}$partTime=${valuePartTime}&fullTime=${valueFullTime}&
+  locationName=${valueLocation}&distancefromlocation=${valueDistanceFromLocation}&permanent=${valuePermanent}&
+  contract=${valueContract}&temp=${valueTemp}&partTime=${valuePartTime}&fullTime=${valueFullTime}&
   minimumSalary=${valueMinSalary}&maximumSalary=${valueMaxSalary}`;
   let usernameReed = "4e067145-304a-4839-8087-efe68077a33a";
   let passwordReed = "";

@@ -6,9 +6,23 @@ import ContainerStyles from "../assets/styles/ContainerStyles.js";
 import Swiper from "react-native-deck-swiper";
 import ReturnButton from "../components/ReturnButton.js";
 
+import * as firebase from "firebase";
+
 const JobCards = ({ data, navigation }) => {
   const [isLoadingGeo, setLoadingGeo] = useState(true);
   const [loglat, setLogLat] = useState([]);
+
+  const addJobID = (jobID) => {
+    firebase.auth().onAuthStateChanged((user) => {
+      firebase
+        .database()
+        .ref("/users/" + user.uid)
+        .push()
+        .set({
+          jobID: jobID,
+        });
+    });
+  };
 
   /*useEffect(() => {
     fetch(
@@ -70,11 +84,11 @@ const JobCards = ({ data, navigation }) => {
       onSwipedAll={() => {
         console.log("All finished");
       }}
-      onSwipedLeft={() => {
-        console.log("Swiped Left");
+      onSwipedLeft={(cardIndex) => {
+        console.log("Job with id " + data[cardIndex].jobId + " discarded");
       }}
-      onSwipedRight={() => {
-        console.log("Swiped Right");
+      onSwipedRight={(cardIndex) => {
+        addJobID(data[cardIndex].jobId);
       }}
       horizontalSwipe={true}
       verticalSwipe={false}
