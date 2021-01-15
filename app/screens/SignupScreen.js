@@ -13,8 +13,6 @@ const validate = (email) => {
 const SignupScreen = () => {
   const [toggleCheckbox, toggleCheckboxSet] = React.useState(false);
   const [valueName, onChangeTextName] = React.useState(null);
-  const [valueSurname, onChangeTextSurname] = React.useState(null);
-  const [valueCity, onChangeTextCity] = React.useState(null);
   const [valueEmail, onChangeTextEmail] = React.useState(null);
   const [valuePassword, onChangeTextPassword] = React.useState(null);
   const [valuePasswordRepeat, onChangeTextPasswordRepeat] = React.useState(
@@ -29,23 +27,7 @@ const SignupScreen = () => {
         value={valueName}
         textContentType="name"
         placeholderTextColor="grey"
-        placeholder="Enter Name"
-      />
-      <TextInput
-        style={ContainerStyles.textArea}
-        onChangeText={(text) => onChangeTextSurname(text)}
-        value={valueSurname}
-        textContentType="familyName"
-        placeholderTextColor="grey"
-        placeholder="Enter Surname"
-      />
-      <TextInput
-        style={ContainerStyles.textArea}
-        onChangeText={(text) => onChangeTextCity(text)}
-        value={valueCity}
-        textContentType="addressCity"
-        placeholderTextColor="grey"
-        placeholder="Enter City"
+        placeholder="Enter Name and Surname"
       />
       <TextInput
         style={ContainerStyles.textArea}
@@ -88,8 +70,6 @@ const SignupScreen = () => {
         style={
           toggleCheckbox &&
           valueName &&
-          valueSurname &&
-          valueCity &&
           valueEmail &&
           valuePassword &&
           valuePasswordRepeat
@@ -101,8 +81,6 @@ const SignupScreen = () => {
           !(
             toggleCheckbox &&
             valueName &&
-            valueSurname &&
-            valueCity &&
             valueEmail &&
             valuePassword &&
             valuePasswordRepeat

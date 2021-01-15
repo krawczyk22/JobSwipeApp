@@ -52,7 +52,6 @@ const JobCards = ({ data, navigation }) => {
 
   const addCoordinates = () => {};*/
   //console.log(data[0].locationName);
-  console.log(loglat);
 
   return (
     <Swiper

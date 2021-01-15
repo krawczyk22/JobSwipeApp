@@ -36,7 +36,6 @@ const onSignIn = (googleUser) => {
         .auth()
         .signInWithCredential(credential)
         .then((result) => {
-          console.log(result.user);
           firebase
             .database()
             .ref("/users/" + result.user.uid)
