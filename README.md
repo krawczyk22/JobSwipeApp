@@ -27,5 +27,8 @@ they can come back and apply for them later.
     <td><img src="showcase/JobSwipe2.png" width="300"></td>
   </tr>
   <tr>
+    <td><img src="showcase/Favourites.png" width="300"></td>
+  </tr>
+  <tr>
   </tr>
 </table>
