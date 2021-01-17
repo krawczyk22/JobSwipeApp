@@ -4,36 +4,32 @@ import ContainerStyles from "../assets/styles/ContainerStyles.js";
 import { SwipeListView } from "react-native-swipe-list-view";
 import * as firebase from "firebase";
 
+const getJobID = () => {
+  return firebase
+    .database()
+    .ref("/users/" + firebase.auth().currentUser.uid + "/")
+    .once("value")
+    .then((snap) => {
+      var jobs = snap.toJSON();
+      var directory = [];
+      for (var key in jobs) {
+        if (jobs.hasOwnProperty(key) && Number.isInteger(jobs[key]["jobID"])) {
+          //console.log(key + " -> " + jobs[key]["jobID"]);
+          directory.push({ jobID: jobs[key]["jobID"] });
+        }
+      }
+      //console.log(JSON.stringify(directory));
+      return JSON.stringify(directory);
+    });
+};
+
 const FavouritesScreen = () => {
   const [isLoading, setLoading] = useState(false);
+  const [jobIDs, setJobIDs] = useState(null);
 
-  var text =
-    "[" +
-    '{ "ID":"John" , "lastName":"Doe" },' +
-    '{ "ID":"Anna" , "lastName":"Smith" },' +
-    '{ "ID":"Peter" , "lastName":"Jones" } ]';
-
-  var obj = JSON.parse(text);
-
-  const getJobID = () => {
-    return firebase
-      .database()
-      .ref("/users/" + firebase.auth().currentUser.uid)
-      .on("child_added", (snap) => {
-        if (Number.isInteger(snap.val().jobID)) {
-          //jobs[snap.val().jobID] = snap.val().jobID;
-          console.log(snap.val().jobID);
-          //return snap.val().jobID;
-        }
-      });
-  };
-
-  const saveJobID = (job) => {
-    const jobs = job;
-    return jobs;
-  };
-
-  console.log(getJobID());
+  getJobID().then((data) => {
+    setJobIDs(JSON.parse(data));
+  });
 
   return (
     <SafeAreaView style={ContainerStyles.container}>
@@ -41,10 +37,10 @@ const FavouritesScreen = () => {
         <Text>You have no jobs saved!</Text>
       ) : (
         <SwipeListView
-          data={obj}
+          data={jobIDs}
           renderItem={({ item }) => (
             <View>
-              <Text>{item.lastName}</Text>
+              <Text>{item.jobID}</Text>
             </View>
           )}
           keyExtractor={(item, index) => index.toString()}
