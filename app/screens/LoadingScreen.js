@@ -5,10 +5,6 @@ import * as firebase from "firebase";
 
 const LoadingScreen = ({ navigation }) => {
   useEffect(() => {
-    checkIfLoggedIn();
-  }, []);
-
-  const checkIfLoggedIn = () => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         navigation.push("Jobs");
@@ -16,7 +12,7 @@ const LoadingScreen = ({ navigation }) => {
         navigation.push("Log in");
       }
     });
-  };
+  }, []);
 
   return (
     <View style={ContainerStyles.container}>

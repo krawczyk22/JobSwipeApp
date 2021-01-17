@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Text, SafeAreaView, View } from "react-native";
-import ContainerStyles from "../assets/styles/ContainerStyles.js";
 import { SwipeListView } from "react-native-swipe-list-view";
 import * as firebase from "firebase";
+import SwipelistviewStyles from "../assets/styles/SwipelistviewStyles.js";
+import LogOutButton from "../components/LogOutButton.js";
+import ContainerStyles from "../assets/styles/ContainerStyles.js";
 
 const getJobID = () => {
   return firebase
@@ -11,48 +13,63 @@ const getJobID = () => {
     .once("value")
     .then((snap) => {
       var jobs = snap.toJSON();
-      var directory = [];
+      var dictionary = [];
       for (var key in jobs) {
         if (jobs.hasOwnProperty(key) && Number.isInteger(jobs[key]["jobID"])) {
-          //console.log(key + " -> " + jobs[key]["jobID"]);
-          directory.push({ jobID: jobs[key]["jobID"] });
+          dictionary.push({ jobID: jobs[key]["jobID"] });
         }
       }
-      //console.log(JSON.stringify(directory));
-      return JSON.stringify(directory);
+      return JSON.stringify(dictionary);
     });
 };
 
-const FavouritesScreen = () => {
-  const [isLoading, setLoading] = useState(false);
+const FavouritesScreen = ({ navigation }) => {
+  const [jobsPresent, setJobsPresent] = useState(false);
   const [jobIDs, setJobIDs] = useState(null);
 
-  getJobID().then((data) => {
-    setJobIDs(JSON.parse(data));
-  });
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        getJobID().then((data) => {
+          setJobIDs(JSON.parse(data));
+        });
+      } else {
+        navigation.push("loading");
+      }
+    });
+  }, []);
 
   return (
-    <SafeAreaView style={ContainerStyles.container}>
-      {isLoading ? (
+    <SafeAreaView style={SwipelistviewStyles.container}>
+      {jobsPresent ? (
         <Text>You have no jobs saved!</Text>
       ) : (
-        <SwipeListView
-          data={jobIDs}
-          renderItem={({ item }) => (
-            <View>
-              <Text>{item.jobID}</Text>
-            </View>
-          )}
-          keyExtractor={(item, index) => index.toString()}
-          renderHiddenItem={(data, rowMap) => (
-            <View>
-              <Text>Left</Text>
-              <Text>Right</Text>
-            </View>
-          )}
-          leftOpenValue={75}
-          rightOpenValue={-75}
-        />
+        <View>
+          <View style={ContainerStyles.container}>
+            <LogOutButton navigation={navigation} />
+          </View>
+          <SwipeListView
+            disableRightSwipe
+            data={jobIDs}
+            renderItem={({ item, rowMap }) => (
+              <View style={SwipelistviewStyles.rowFront}>
+                <Text>{item.jobID}</Text>
+              </View>
+            )}
+            keyExtractor={(item, index) => index.toString()}
+            renderHiddenItem={() => (
+              <View
+                style={[
+                  SwipelistviewStyles.backRightBtn,
+                  SwipelistviewStyles.backRightBtnRight,
+                ]}
+              >
+                <Text>Delete</Text>
+              </View>
+            )}
+            rightOpenValue={-75}
+          />
+        </View>
       )}
     </SafeAreaView>
   );
