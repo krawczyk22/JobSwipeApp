@@ -12,14 +12,17 @@ const JobCards = ({ data, navigation }) => {
   const [isLoadingGeo, setLoadingGeo] = useState(true);
   const [loglat, setLogLat] = useState([]);
 
-  const addJobID = (jobID) => {
+  const addJobID = (data) => {
     firebase.auth().onAuthStateChanged((user) => {
       firebase
         .database()
         .ref("/users/" + user.uid)
         .push()
         .set({
-          jobID: jobID,
+          jobId: data.jobId,
+          jobTitle: data.jobTitle,
+          employerName: data.employerName,
+          jobUrl: data.jobUrl,
         });
     });
   };
@@ -87,7 +90,7 @@ const JobCards = ({ data, navigation }) => {
         console.log("Job with id " + data[cardIndex].jobId + " discarded");
       }}
       onSwipedRight={(cardIndex) => {
-        addJobID(data[cardIndex].jobId);
+        addJobID(data[cardIndex]);
       }}
       horizontalSwipe={true}
       verticalSwipe={false}
