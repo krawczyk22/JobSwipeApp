@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Text, SafeAreaView, View, ActivityIndicator } from "react-native";
+import {
+  Text,
+  SafeAreaView,
+  View,
+  ActivityIndicator,
+  TouchableOpacity,
+  Linking,
+} from "react-native";
 import { SwipeListView } from "react-native-swipe-list-view";
 import * as firebase from "firebase";
 import SwipelistviewStyles from "../assets/styles/SwipelistviewStyles.js";
@@ -28,6 +35,18 @@ const getJobID = () => {
     });
 };
 
+const handleURL = (url) => {
+  Linking.canOpenURL(url)
+    .then((supported) => {
+      if (!supported) {
+        console.log("Can't handle url: " + url);
+      } else {
+        return Linking.openURL(url);
+      }
+    })
+    .catch((err) => console.error("An error occurred", err));
+};
+
 const FavouritesScreen = ({ navigation }) => {
   const [jobsNotPresent, setJobsNotPresent] = useState(true);
   const [jobIDs, setJobIDs] = useState(null);
@@ -36,6 +55,7 @@ const FavouritesScreen = ({ navigation }) => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         getJobID().then((data) => {
+          console.log(JSON.parse(data));
           setJobIDs(JSON.parse(data));
           setJobsNotPresent(false);
         });
@@ -60,12 +80,17 @@ const FavouritesScreen = ({ navigation }) => {
           <SwipeListView
             disableRightSwipe
             data={jobIDs}
-            renderItem={({ item, rowMap }) => (
-              <View style={SwipelistviewStyles.rowFront}>
-                <Text>
-                  {item.jobTitle} | {item.employerName}
-                </Text>
-              </View>
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={() => handleURL(item.jobUrl)}
+              >
+                <View style={SwipelistviewStyles.rowFront}>
+                  <Text>
+                    {item.jobTitle} | {item.employerName}
+                  </Text>
+                </View>
+              </TouchableOpacity>
             )}
             keyExtractor={(item, index) => index.toString()}
             renderHiddenItem={() => (
