@@ -6,6 +6,7 @@ import {
   ActivityIndicator,
   TouchableOpacity,
   Linking,
+  Alert,
 } from "react-native";
 import { SwipeListView } from "react-native-swipe-list-view";
 import * as firebase from "firebase";
@@ -41,11 +42,25 @@ const handleURL = (url) => {
       if (!supported) {
         console.log("Can't handle url: " + url);
       } else {
-        return Linking.openURL(url);
+        return opelURLalert(url);
       }
     })
     .catch((err) => console.error("An error occurred", err));
 };
+
+const opelURLalert = (url) =>
+  Alert.alert(
+    "Open link",
+    "Do you want to open this link?",
+    [
+      {
+        text: "Cancel",
+        style: "cancel",
+      },
+      { text: "OK", onPress: () => Linking.openURL(url) },
+    ],
+    { cancelable: false }
+  );
 
 const FavouritesScreen = ({ navigation }) => {
   const [jobsNotPresent, setJobsNotPresent] = useState(true);

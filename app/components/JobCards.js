@@ -9,9 +9,6 @@ import ReturnButton from "../components/ReturnButton.js";
 import * as firebase from "firebase";
 
 const JobCards = ({ data, navigation }) => {
-  const [isLoadingGeo, setLoadingGeo] = useState(true);
-  const [loglat, setLogLat] = useState([]);
-
   const addJobID = (data) => {
     firebase.auth().onAuthStateChanged((user) => {
       firebase
@@ -82,9 +79,6 @@ const JobCards = ({ data, navigation }) => {
             </Text>
           </View>
         );
-      }}
-      onSwipedAll={() => {
-        console.log("All finished");
       }}
       onSwipedLeft={(cardIndex) => {
         console.log("Job with id " + data[cardIndex].jobId + " discarded");
