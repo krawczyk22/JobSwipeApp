@@ -24,7 +24,7 @@ const getJobID = () => {
 };
 
 const FavouritesScreen = ({ navigation }) => {
-  const [jobsPresent, setJobsPresent] = useState(false);
+  const [jobsNotPresent, setJobsNotPresent] = useState(true);
   const [jobIDs, setJobIDs] = useState(null);
 
   useEffect(() => {
@@ -32,6 +32,7 @@ const FavouritesScreen = ({ navigation }) => {
       if (user) {
         getJobID().then((data) => {
           setJobIDs(JSON.parse(data));
+          setJobsNotPresent(false);
         });
       } else {
         navigation.push("loading");
@@ -41,8 +42,12 @@ const FavouritesScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={SwipelistviewStyles.container}>
-      {jobsPresent ? (
-        <Text>You have no jobs saved!</Text>
+      {jobsNotPresent ? (
+        <View style={ContainerStyles.container}>
+          <LogOutButton navigation={navigation} />
+          <View></View>
+          <Text>You have no jobs saved!</Text>
+        </View>
       ) : (
         <View>
           <View style={ContainerStyles.container}>

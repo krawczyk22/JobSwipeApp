@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { SafeAreaView, ActivityIndicator, View } from "react-native";
 import ContainerStyles from "../assets/styles/ContainerStyles.js";
 import JobCards from "../components/JobCards.js";
+import ReturnButton from "../components/ReturnButton.js";
 
 const JobSearchScreen = ({ route, navigation }) => {
   const [isLoadingReed, setLoadingReed] = useState(true);
@@ -46,7 +47,10 @@ const JobSearchScreen = ({ route, navigation }) => {
   return (
     <SafeAreaView style={ContainerStyles.container}>
       {isLoadingReed ? (
-        <ActivityIndicator />
+        <View>
+          <ReturnButton navigation={navigation} />
+          <ActivityIndicator />
+        </View>
       ) : (
         <View style={{ height: "100%", width: "100%" }}>
           <JobCards data={data} navigation={navigation} />
