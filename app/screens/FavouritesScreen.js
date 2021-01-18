@@ -64,13 +64,13 @@ const opelURLalert = (url) =>
 
 const FavouritesScreen = ({ navigation }) => {
   const [jobsNotPresent, setJobsNotPresent] = useState(true);
-  const [jobIDs, setJobIDs] = useState(null);
+  const [jobData, setJobData] = useState(null);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         getJobID().then((data) => {
-          setJobIDs(JSON.parse(data));
+          setJobData(JSON.parse(data));
           setJobsNotPresent(false);
         });
       } else {
@@ -93,10 +93,11 @@ const FavouritesScreen = ({ navigation }) => {
           </View>
           <SwipeListView
             disableRightSwipe
-            data={jobIDs}
+            data={jobData}
             renderItem={({ item }) => (
               <TouchableOpacity
-                activeOpacity={0.8}
+                activeOpacity={false}
+                underlayColor={"#FFFFFF"}
                 onPress={() => handleURL(item.jobUrl)}
               >
                 <View style={SwipelistviewStyles.rowFront}>
