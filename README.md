@@ -28,6 +28,7 @@ they can come back and apply for them later.
   </tr>
   <tr>
     <td><img src="showcase/Favourites.png" width="300"></td>
+    <td><img src="showcase/FavouritesOpened.png" width="300"></td>
   </tr>
   <tr>
   </tr>

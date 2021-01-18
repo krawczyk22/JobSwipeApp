@@ -70,7 +70,6 @@ const FavouritesScreen = ({ navigation }) => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         getJobID().then((data) => {
-          console.log(JSON.parse(data));
           setJobIDs(JSON.parse(data));
           setJobsNotPresent(false);
         });
