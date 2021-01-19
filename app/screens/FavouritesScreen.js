@@ -14,85 +14,92 @@ import SwipelistviewStyles from "../assets/styles/SwipelistviewStyles.js";
 import LogOutButton from "../components/LogOutButton.js";
 import ContainerStyles from "../assets/styles/ContainerStyles.js";
 
-const getJobID = () => {
-  return firebase
-    .database()
-    .ref("/users/" + firebase.auth().currentUser.uid + "/")
-    .once("value")
-    .then((snap) => {
-      var jobs = snap.toJSON();
-      var dictionary = [];
-      for (var key in jobs) {
-        if (jobs.hasOwnProperty(key) && Number.isInteger(jobs[key]["jobId"])) {
-          dictionary.push({
-            jobId: jobs[key]["jobId"],
-            employerName: jobs[key]["employerName"],
-            jobTitle: jobs[key]["jobTitle"],
-            jobUrl: jobs[key]["jobUrl"],
-          });
-        }
-      }
-      return JSON.stringify(dictionary);
-    });
-};
-
-const handleURL = (url) => {
-  Linking.canOpenURL(url)
-    .then((supported) => {
-      if (!supported) {
-        console.log("Can't handle url: " + url);
-      } else {
-        return openURLalert(url);
-      }
-    })
-    .catch((err) => console.error("An error occurred", err));
-};
-
-const openURLalert = (url) =>
-  Alert.alert(
-    "Open link",
-    "Do you want to open this link?",
-    [
-      {
-        text: "Cancel",
-        style: "cancel",
-      },
-      { text: "OK", onPress: () => Linking.openURL(url) },
-    ],
-    { cancelable: false }
-  );
-
-const deleteJob = (jobId) => {
-  let path = "/users/" + firebase.auth().currentUser.uid + "/";
-  firebase
-    .database()
-    .ref(path)
-    .on("child_added", (snap) => {
-      if (snap.val()["jobId"] == jobId) {
-        firebase
-          .database()
-          .ref(path + snap.key)
-          .remove();
-      }
-    });
-};
-
 const FavouritesScreen = ({ navigation }) => {
   const [jobsNotPresent, setJobsNotPresent] = useState(true);
   const [jobData, setJobData] = useState(null);
+  const [refresh, setRefresh] = useState(1);
+
+  const getJobID = () => {
+    return firebase
+      .database()
+      .ref("/users/" + firebase.auth().currentUser.uid + "/")
+      .once("value")
+      .then((snap) => {
+        var jobs = snap.toJSON();
+        var dictionary = [];
+        for (var key in jobs) {
+          if (
+            jobs.hasOwnProperty(key) &&
+            Number.isInteger(jobs[key]["jobId"])
+          ) {
+            dictionary.push({
+              jobId: jobs[key]["jobId"],
+              employerName: jobs[key]["employerName"],
+              jobTitle: jobs[key]["jobTitle"],
+              jobUrl: jobs[key]["jobUrl"],
+            });
+          }
+        }
+        return JSON.stringify(dictionary);
+      });
+  };
+
+  const handleURL = (url) => {
+    Linking.canOpenURL(url)
+      .then((supported) => {
+        if (!supported) {
+          console.log("Can't handle url: " + url);
+        } else {
+          return openURLalert(url);
+        }
+      })
+      .catch((err) => console.error("An error occurred", err));
+  };
+
+  const openURLalert = (url) =>
+    Alert.alert(
+      "Open link",
+      "Do you want to open this link?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        { text: "OK", onPress: () => Linking.openURL(url) },
+      ],
+      { cancelable: false }
+    );
+
+  const deleteJob = (jobId, refresh) => {
+    console.log("Function deleteJob is running!");
+    let path = "/users/" + firebase.auth().currentUser.uid + "/";
+    firebase
+      .database()
+      .ref(path)
+      .on("child_added", (snap) => {
+        if (snap.val()["jobId"] == jobId) {
+          firebase
+            .database()
+            .ref(path + snap.key)
+            .remove();
+        }
+      });
+    setRefresh(refresh + 1);
+  };
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
+        console.log("useEffect runs");
         getJobID().then((data) => {
           setJobData(JSON.parse(data));
-          setJobsNotPresent(false);
         });
+        setJobsNotPresent(false);
       } else {
         navigation.push("loading");
       }
     });
-  }, []);
+  }, [refresh]);
 
   return (
     <SafeAreaView style={SwipelistviewStyles.container}>
@@ -129,7 +136,7 @@ const FavouritesScreen = ({ navigation }) => {
                   SwipelistviewStyles.backRightBtn,
                   SwipelistviewStyles.backRightBtnRight,
                 ]}
-                onPress={() => deleteJob(item.jobId)}
+                onPress={() => deleteJob(item.jobId, refresh)}
               >
                 <View>
                   <Text>Delete</Text>
