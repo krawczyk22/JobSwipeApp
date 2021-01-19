@@ -42,13 +42,13 @@ const handleURL = (url) => {
       if (!supported) {
         console.log("Can't handle url: " + url);
       } else {
-        return opelURLalert(url);
+        return openURLalert(url);
       }
     })
     .catch((err) => console.error("An error occurred", err));
 };
 
-const opelURLalert = (url) =>
+const openURLalert = (url) =>
   Alert.alert(
     "Open link",
     "Do you want to open this link?",
@@ -61,6 +61,21 @@ const opelURLalert = (url) =>
     ],
     { cancelable: false }
   );
+
+const deleteJob = (jobId) => {
+  let path = "/users/" + firebase.auth().currentUser.uid + "/";
+  firebase
+    .database()
+    .ref(path)
+    .on("child_added", (snap) => {
+      if (snap.val()["jobId"] == jobId) {
+        firebase
+          .database()
+          .ref(path + snap.key)
+          .remove();
+      }
+    });
+};
 
 const FavouritesScreen = ({ navigation }) => {
   const [jobsNotPresent, setJobsNotPresent] = useState(true);
@@ -84,7 +99,7 @@ const FavouritesScreen = ({ navigation }) => {
       {jobsNotPresent ? (
         <View style={ContainerStyles.container}>
           <ActivityIndicator />
-          <Text>You have no jobs saved!</Text>
+          <Text>Loading, please wait</Text>
         </View>
       ) : (
         <View>
@@ -96,7 +111,7 @@ const FavouritesScreen = ({ navigation }) => {
             data={jobData}
             renderItem={({ item }) => (
               <TouchableOpacity
-                activeOpacity={false}
+                activeOpacity={0.8}
                 underlayColor={"#FFFFFF"}
                 onPress={() => handleURL(item.jobUrl)}
               >
@@ -108,15 +123,18 @@ const FavouritesScreen = ({ navigation }) => {
               </TouchableOpacity>
             )}
             keyExtractor={(item, index) => index.toString()}
-            renderHiddenItem={() => (
-              <View
+            renderHiddenItem={({ item }) => (
+              <TouchableOpacity
                 style={[
                   SwipelistviewStyles.backRightBtn,
                   SwipelistviewStyles.backRightBtnRight,
                 ]}
+                onPress={() => deleteJob(item.jobId)}
               >
-                <Text>Delete</Text>
-              </View>
+                <View>
+                  <Text>Delete</Text>
+                </View>
+              </TouchableOpacity>
             )}
             rightOpenValue={-75}
           />
