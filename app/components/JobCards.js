@@ -5,6 +5,7 @@ import CardStyles from "../assets/styles/CardStyles.js";
 import ContainerStyles from "../assets/styles/ContainerStyles.js";
 import Swiper from "react-native-deck-swiper";
 import ReturnButton from "../components/ReturnButton.js";
+//import FavouritesScreen from "../screens/FavouritesScreen.js";
 
 import * as firebase from "firebase";
 
@@ -22,6 +23,7 @@ const JobCards = ({ data, navigation }) => {
           jobUrl: data.jobUrl,
         });
     });
+    //FavouritesScreen.setRefresh(1);
   };
 
   /*useEffect(() => {

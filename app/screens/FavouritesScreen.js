@@ -87,6 +87,20 @@ const FavouritesScreen = ({ navigation }) => {
     setRefresh(refresh + 1);
   };
 
+  const deleteJobAlert = (jobId, refresh) =>
+    Alert.alert(
+      "Delete",
+      "Do you want to delete this?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        { text: "OK", onPress: () => deleteJob(jobId, refresh) },
+      ],
+      { cancelable: false }
+    );
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -136,7 +150,7 @@ const FavouritesScreen = ({ navigation }) => {
                   SwipelistviewStyles.backRightBtn,
                   SwipelistviewStyles.backRightBtnRight,
                 ]}
-                onPress={() => deleteJob(item.jobId, refresh)}
+                onPress={() => deleteJobAlert(item.jobId, refresh)}
               >
                 <View>
                   <Text>Delete</Text>
