@@ -8,7 +8,6 @@ export default StyleSheet.create({
   },
   switchContainer: {
     flexDirection: "row",
-    //justifyContent: "center",
     marginVertical: 50,
     flexWrap: "wrap",
   },

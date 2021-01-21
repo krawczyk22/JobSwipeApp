@@ -12,7 +12,7 @@ import {
 import { SwipeListView } from "react-native-swipe-list-view";
 import * as firebase from "firebase";
 import SwipelistviewStyles from "../assets/styles/SwipelistviewStyles.js";
-import LogOutButton from "../components/LogOutButton.js";
+import LogOutButton from "../components/buttons/LogOutButton.js";
 import ContainerStyles from "../assets/styles/ContainerStyles.js";
 import TextStyles from "../assets/styles/TextStyles.js";
 

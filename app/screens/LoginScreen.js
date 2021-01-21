@@ -4,8 +4,8 @@ import { CheckBox } from "react-native-elements";
 
 import ContainerStyles from "../assets/styles/ContainerStyles.js";
 import TextStyles from "../assets/styles/TextStyles.js";
-import ThirdPartyButton from "../components/ThirdPartyButton.js";
-import LoginButton from "../components/LoginButton.js";
+import ThirdPartyButton from "../components/buttons/ThirdPartyButton.js";
+import LoginButton from "../components/buttons/LoginButton.js";
 import signInWithGoogleAsync from "../auth/google.js";
 import signInWithFacebook from "../auth/facebook.js";
 

@@ -2,7 +2,7 @@ import React from "react";
 import { Text, View } from "react-native";
 import ContainerStyles from "../assets/styles/ContainerStyles.js";
 import TextStyles from "../assets/styles/TextStyles.js";
-import WelcomeButton from "../components/WelcomeButton.js";
+import WelcomeButton from "../components/buttons/WelcomeButton.js";
 
 const WelcomeScreen = ({ navigation }) => {
   return (

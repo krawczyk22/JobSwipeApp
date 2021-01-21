@@ -46,10 +46,4 @@ export default StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  mapStyle: {
-    width: "auto",
-    height: "30%",
-    zIndex: -1,
-    borderTopWidth: 10,
-  },
 });

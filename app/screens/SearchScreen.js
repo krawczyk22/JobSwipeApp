@@ -10,7 +10,7 @@ import { CheckBox } from "react-native-elements";
 import ContainerStyles from "../assets/styles/ContainerStyles.js";
 import TextStyles from "../assets/styles/TextStyles.js";
 import ButtonStyles from "../assets/styles/ButtonStyles.js";
-import LogOutButton from "../components/LogOutButton.js";
+import LogOutButton from "../components/buttons/LogOutButton.js";
 
 const SearchScreen = ({ navigation }) => {
   const [valueKeyWords, onChangeKeyWords] = React.useState(null);

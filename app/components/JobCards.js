@@ -1,12 +1,9 @@
 import React from "react";
-import { Text, SafeAreaView } from "react-native";
-import MapView from "react-native-maps";
-import CardStyles from "../assets/styles/CardStyles.js";
-import ContainerStyles from "../assets/styles/ContainerStyles.js";
+import { Text, SafeAreaView, StyleSheet } from "react-native";
 import TextStyles from "../assets/styles/TextStyles.js";
 import Swiper from "react-native-deck-swiper";
-import ReturnButton from "../components/ReturnButton.js";
-//import FavouritesScreen from "../screens/FavouritesScreen.js";
+import ReturnButton from "../components/buttons/ReturnButton.js";
+import Map from "Map.js";
 
 import * as firebase from "firebase";
 
@@ -48,23 +45,12 @@ const JobCards = ({ data, navigation }) => {
       cards={data}
       renderCard={(card) => {
         return (
-          <SafeAreaView style={CardStyles.card}>
-            <MapView
-              style={ContainerStyles.mapStyle}
-              loadingEnabled={true}
-              initialRegion={{
-                //latitude: location.coords.latitude,
-                //longitude: location.coords.longitude,
-                latitude: 52.4862,
-                longitude: -1.8904,
-                latitudeDelta: 0.1,
-                longitudeDelta: 0.1,
-              }}
-            ></MapView>
-            <Text style={CardStyles.textHeader}>{card.jobTitle}</Text>
-            <Text style={CardStyles.textHeader}>{card.employerName}</Text>
-            <Text style={CardStyles.textHeader}>{card.locationName}</Text>
-            <Text style={CardStyles.textDescription}>
+          <SafeAreaView style={localStyles.card}>
+            <Map />
+            <Text style={localStyles.textHeader}>{card.jobTitle}</Text>
+            <Text style={localStyles.textHeader}>{card.employerName}</Text>
+            <Text style={localStyles.textHeader}>{card.locationName}</Text>
+            <Text style={localStyles.textDescription}>
               {card.jobDescription}
             </Text>
           </SafeAreaView>
@@ -86,5 +72,30 @@ const JobCards = ({ data, navigation }) => {
     </Swiper>
   );
 };
+
+const localStyles = StyleSheet.create({
+  card: {
+    flex: 1,
+    borderRadius: 4,
+    borderWidth: 2,
+    padding: 4,
+    borderColor: "#E8E8E8",
+    backgroundColor: "white",
+  },
+  textHeader: {
+    padding: 4,
+    fontSize: 25,
+    marginTop: 5,
+    textAlign: "left",
+    backgroundColor: "transparent",
+  },
+  textDescription: {
+    padding: 4,
+    fontSize: 15,
+    marginTop: 5,
+    textAlign: "left",
+    backgroundColor: "transparent",
+  },
+});
 
 export default JobCards;
