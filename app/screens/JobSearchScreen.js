@@ -6,9 +6,7 @@ import ReturnButton from "../components/ReturnButton.js";
 
 const JobSearchScreen = ({ route, navigation }) => {
   const [isLoadingReed, setLoadingReed] = useState(true);
-  const [isLoadingGeo, setLoadingGeo] = useState(true);
   const [data, setData] = useState([]);
-  const [loglat, setLogLat] = useState([]);
   const base64 = require("base-64");
 
   const {
@@ -24,12 +22,26 @@ const JobSearchScreen = ({ route, navigation }) => {
     valuePartTime,
   } = route.params;
 
-  let urlReed = `https://www.reed.co.uk/api/1.0/search?keywords=${valueKeyWords}&
-  locationName=${valueLocation}&distancefromlocation=${valueDistanceFromLocation}&permanent=${valuePermanent}&
+  let urlReed = `https://www.reed.co.uk/api/1.0/search?keywords=${valueKeyWords}
+  &locationname=${valueLocation}&distancefromlocation=${valueDistanceFromLocation}&permanent=${valuePermanent}&
   contract=${valueContract}&temp=${valueTemp}&partTime=${valuePartTime}&fullTime=${valueFullTime}&
   minimumSalary=${valueMinSalary}&maximumSalary=${valueMaxSalary}`;
   let usernameReed = "4e067145-304a-4839-8087-efe68077a33a";
   let passwordReed = "";
+
+  const getCoordinates = (city) => {
+    return fetch(
+      `http://open.mapquestapi.com/geocoding/v1/address?key=RcaRGE3AeecDHhGKCWDr8dolsC4kCsM5&location=${city},GB`,
+      {
+        method: "GET",
+      }
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        return json.results[0].locations[0].latLng;
+      })
+      .catch((error) => console.error(error));
+  };
 
   useEffect(() => {
     fetch(urlReed, {
@@ -39,7 +51,18 @@ const JobSearchScreen = ({ route, navigation }) => {
       },
     })
       .then((response) => response.json())
-      .then((json) => setData(json.results))
+      .then((json) => {
+        /*for (let i in json.results) {
+          let [data, setTemp] = useState([]);
+          getCoordinates(json.results[i].locationName).then((result) =>
+            setTemp(result)
+          );
+          //json.results.push(data);
+        }
+        //console.log(json.results[0].locationName);
+        console.log(json.results);*/
+        setData(json.results);
+      })
       .catch((error) => console.error(error))
       .finally(() => setLoadingReed(false));
   }, []);

@@ -3,6 +3,7 @@ import { Text, SafeAreaView } from "react-native";
 import MapView from "react-native-maps";
 import CardStyles from "../assets/styles/CardStyles.js";
 import ContainerStyles from "../assets/styles/ContainerStyles.js";
+import TextStyles from "../assets/styles/TextStyles.js";
 import Swiper from "react-native-deck-swiper";
 import ReturnButton from "../components/ReturnButton.js";
 //import FavouritesScreen from "../screens/FavouritesScreen.js";
@@ -23,22 +24,9 @@ const JobCards = ({ data, navigation }) => {
           jobUrl: data.jobUrl,
         });
     });
-    //FavouritesScreen.setRefresh(1);
   };
 
-  /*useEffect(() => {
-    fetch(
-      `http://open.mapquestapi.com/geocoding/v1/address?key=RcaRGE3AeecDHhGKCWDr8dolsC4kCsM5&location=${data.locationName},GB`,
-      {
-        method: "GET",
-      }
-    )
-      .then((response) => response.json())
-      .then((json) => setLogLat(json.results[0].locations[0].latLng))
-      .catch((error) => console.error(error))
-      .finally(() => setLoadingGeo(false));
-  }, []);
-
+  /*
   const getCoordinates = (city) => {
     fetch(
       `http://open.mapquestapi.com/geocoding/v1/address?key=RcaRGE3AeecDHhGKCWDr8dolsC4kCsM5&location=${city},GB`,
@@ -91,7 +79,10 @@ const JobCards = ({ data, navigation }) => {
       backgroundColor={"#E8EDFF"}
       stackSize={3}
     >
-      <ReturnButton navigation={navigation} />
+      <SafeAreaView style={{ flexDirection: "row" }}>
+        <ReturnButton navigation={navigation} />
+        <Text style={TextStyles.title}>Swipe away!</Text>
+      </SafeAreaView>
     </Swiper>
   );
 };
