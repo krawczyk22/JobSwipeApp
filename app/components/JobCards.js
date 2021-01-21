@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Text, View } from "react-native";
+import React from "react";
+import { Text, SafeAreaView } from "react-native";
 import MapView from "react-native-maps";
 import CardStyles from "../assets/styles/CardStyles.js";
 import ContainerStyles from "../assets/styles/ContainerStyles.js";
@@ -60,7 +60,7 @@ const JobCards = ({ data, navigation }) => {
       cards={data}
       renderCard={(card) => {
         return (
-          <View style={CardStyles.card}>
+          <SafeAreaView style={CardStyles.card}>
             <MapView
               style={ContainerStyles.mapStyle}
               loadingEnabled={true}
@@ -79,11 +79,8 @@ const JobCards = ({ data, navigation }) => {
             <Text style={CardStyles.textDescription}>
               {card.jobDescription}
             </Text>
-          </View>
+          </SafeAreaView>
         );
-      }}
-      onSwipedLeft={(cardIndex) => {
-        console.log("Job with id " + data[cardIndex].jobId + " discarded");
       }}
       onSwipedRight={(cardIndex) => {
         addJobID(data[cardIndex]);

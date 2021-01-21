@@ -48,7 +48,8 @@ export default StyleSheet.create({
   },
   mapStyle: {
     width: "auto",
-    height: "40%",
+    height: "30%",
     zIndex: -1,
+    borderTopWidth: 10,
   },
 });

@@ -66,7 +66,7 @@ export default StyleSheet.create({
     margin: 10,
   },
   buttonGoBack: {
-    width: 120,
+    width: 100,
     height: 50,
     left: 10,
     backgroundColor: "#00BCD4",

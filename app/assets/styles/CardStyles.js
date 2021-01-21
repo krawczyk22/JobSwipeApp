@@ -11,14 +11,14 @@ export default StyleSheet.create({
   },
   textHeader: {
     padding: 4,
-    fontSize: 30,
+    fontSize: 25,
     marginTop: 5,
     textAlign: "left",
     backgroundColor: "transparent",
   },
   textDescription: {
     padding: 4,
-    fontSize: 18,
+    fontSize: 15,
     marginTop: 5,
     textAlign: "left",
     backgroundColor: "transparent",

@@ -41,8 +41,10 @@ const SearchScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={ContainerStyles.container}>
-      <LogOutButton navigation={navigation} />
-      <Text style={TextStyles.title}>Enter Job Information</Text>
+      <SafeAreaView style={{ flexDirection: "row" }}>
+        <LogOutButton navigation={navigation} />
+        <Text style={TextStyles.title}>Enter Details</Text>
+      </SafeAreaView>
       <TextInput
         style={ContainerStyles.textArea}
         onChangeText={(text) => onChangeKeyWords(text)}

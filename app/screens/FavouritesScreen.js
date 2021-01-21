@@ -7,15 +7,17 @@ import {
   TouchableOpacity,
   Linking,
   Alert,
+  TouchableHighlight,
 } from "react-native";
 import { SwipeListView } from "react-native-swipe-list-view";
 import * as firebase from "firebase";
 import SwipelistviewStyles from "../assets/styles/SwipelistviewStyles.js";
 import LogOutButton from "../components/LogOutButton.js";
 import ContainerStyles from "../assets/styles/ContainerStyles.js";
+import TextStyles from "../assets/styles/TextStyles.js";
 
 const FavouritesScreen = ({ navigation }) => {
-  const [jobsNotPresent, setJobsNotPresent] = useState(true);
+  const [jobsNotRendered, setJobsNotRendered] = useState(true);
   const [jobData, setJobData] = useState(null);
   const [refresh, setRefresh] = useState(1);
 
@@ -105,18 +107,14 @@ const FavouritesScreen = ({ navigation }) => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         navigation.addListener("tabPress", (e) => {
-          console.log("useEffect runs2");
           getJobID().then((data) => {
             setJobData(JSON.parse(data));
           });
-          //e.preventDefault();
         });
-        console.log("useEffect runs1");
         getJobID().then((data) => {
           setJobData(JSON.parse(data));
         });
-        setJobsNotPresent(false);
-        //return unsubscribe;
+        setJobsNotRendered(false);
       } else {
         navigation.push("loading");
       }
@@ -125,31 +123,34 @@ const FavouritesScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={SwipelistviewStyles.container}>
-      {jobsNotPresent ? (
+      {jobsNotRendered ? (
         <View style={ContainerStyles.container}>
           <ActivityIndicator />
           <Text>Loading, please wait</Text>
         </View>
       ) : (
         <SafeAreaView>
-          <View style={ContainerStyles.container}>
+          <SafeAreaView
+            style={[{ flexDirection: "row", justifyContent: "center" }]}
+          >
             <LogOutButton navigation={navigation} />
-          </View>
+            <Text style={TextStyles.title}>Saved Jobs</Text>
+          </SafeAreaView>
           <SwipeListView
             disableRightSwipe
             data={jobData}
             renderItem={({ item }) => (
-              <TouchableOpacity
-                activeOpacity={0.8}
-                underlayColor={"#FFFFFF"}
+              <TouchableHighlight
                 onPress={() => handleURL(item.jobUrl)}
+                underlayColor={"#AAA"}
+                style={SwipelistviewStyles.rowFront}
               >
-                <SafeAreaView style={SwipelistviewStyles.rowFront}>
+                <SafeAreaView>
                   <Text>
                     {item.jobTitle} | {item.employerName}
                   </Text>
                 </SafeAreaView>
-              </TouchableOpacity>
+              </TouchableHighlight>
             )}
             keyExtractor={(item, index) => index.toString()}
             renderHiddenItem={({ item }) => (
