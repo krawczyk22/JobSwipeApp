@@ -104,16 +104,24 @@ const FavouritesScreen = ({ navigation }) => {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        console.log("useEffect runs");
+        navigation.addListener("tabPress", (e) => {
+          console.log("useEffect runs2");
+          getJobID().then((data) => {
+            setJobData(JSON.parse(data));
+          });
+          //e.preventDefault();
+        });
+        console.log("useEffect runs1");
         getJobID().then((data) => {
           setJobData(JSON.parse(data));
         });
         setJobsNotPresent(false);
+        //return unsubscribe;
       } else {
         navigation.push("loading");
       }
     });
-  }, [refresh]);
+  }, [navigation, refresh]);
 
   return (
     <SafeAreaView style={SwipelistviewStyles.container}>
