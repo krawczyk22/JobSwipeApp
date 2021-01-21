@@ -131,7 +131,7 @@ const FavouritesScreen = ({ navigation }) => {
           <Text>Loading, please wait</Text>
         </View>
       ) : (
-        <View>
+        <SafeAreaView>
           <View style={ContainerStyles.container}>
             <LogOutButton navigation={navigation} />
           </View>
@@ -144,11 +144,11 @@ const FavouritesScreen = ({ navigation }) => {
                 underlayColor={"#FFFFFF"}
                 onPress={() => handleURL(item.jobUrl)}
               >
-                <View style={SwipelistviewStyles.rowFront}>
+                <SafeAreaView style={SwipelistviewStyles.rowFront}>
                   <Text>
                     {item.jobTitle} | {item.employerName}
                   </Text>
-                </View>
+                </SafeAreaView>
               </TouchableOpacity>
             )}
             keyExtractor={(item, index) => index.toString()}
@@ -167,7 +167,7 @@ const FavouritesScreen = ({ navigation }) => {
             )}
             rightOpenValue={-75}
           />
-        </View>
+        </SafeAreaView>
       )}
     </SafeAreaView>
   );

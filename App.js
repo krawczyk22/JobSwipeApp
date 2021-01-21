@@ -90,20 +90,31 @@ export default function App() {
           headerShown: false,
         }}
       >
-        <Stack.Screen name="Welcome" component={WelcomeScreen}></Stack.Screen>
+        <Stack.Screen
+          name="Welcome"
+          component={WelcomeScreen}
+          options={{ gestureEnabled: false }}
+        ></Stack.Screen>
         <Stack.Screen
           name="Log in"
           children={createBottomTabsWelcome}
+          options={{ gestureEnabled: false }}
         ></Stack.Screen>
         <Stack.Screen
           name="Jobs"
           children={createBottomTabsAuthorised}
+          options={{ gestureEnabled: false }}
         ></Stack.Screen>
         <Stack.Screen
           name="JobSearch"
           component={JobSearchScreen}
+          options={{ gestureEnabled: false }}
         ></Stack.Screen>
-        <Stack.Screen name="loading" component={LoadingScreen}></Stack.Screen>
+        <Stack.Screen
+          name="loading"
+          component={LoadingScreen}
+          options={{ gestureEnabled: false }}
+        ></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );
