@@ -1,10 +1,10 @@
 import React from "react";
-import { Text, SafeAreaView, StyleSheet } from "react-native";
-import TextStyles from "../assets/styles/TextStyles.js";
+import { Text, SafeAreaView } from "react-native";
+import TextStyles from "../../assets/styles/TextStyles.js";
+import JobCardStyles from "./JobCardsStyles.js";
 import Swiper from "react-native-deck-swiper";
-import ReturnButton from "../components/buttons/ReturnButton.js";
-import Map from "Map.js";
-
+import ReturnButton from "../buttons/ReturnButton.js";
+import Map from "../map/Map.js";
 import * as firebase from "firebase";
 
 const JobCards = ({ data, navigation }) => {
@@ -45,12 +45,12 @@ const JobCards = ({ data, navigation }) => {
       cards={data}
       renderCard={(card) => {
         return (
-          <SafeAreaView style={localStyles.card}>
+          <SafeAreaView style={JobCardStyles.card}>
             <Map />
-            <Text style={localStyles.textHeader}>{card.jobTitle}</Text>
-            <Text style={localStyles.textHeader}>{card.employerName}</Text>
-            <Text style={localStyles.textHeader}>{card.locationName}</Text>
-            <Text style={localStyles.textDescription}>
+            <Text style={JobCardStyles.textHeader}>{card.jobTitle}</Text>
+            <Text style={JobCardStyles.textHeader}>{card.employerName}</Text>
+            <Text style={JobCardStyles.textHeader}>{card.locationName}</Text>
+            <Text style={JobCardStyles.textDescription}>
               {card.jobDescription}
             </Text>
           </SafeAreaView>
@@ -72,30 +72,5 @@ const JobCards = ({ data, navigation }) => {
     </Swiper>
   );
 };
-
-const localStyles = StyleSheet.create({
-  card: {
-    flex: 1,
-    borderRadius: 4,
-    borderWidth: 2,
-    padding: 4,
-    borderColor: "#E8E8E8",
-    backgroundColor: "white",
-  },
-  textHeader: {
-    padding: 4,
-    fontSize: 25,
-    marginTop: 5,
-    textAlign: "left",
-    backgroundColor: "transparent",
-  },
-  textDescription: {
-    padding: 4,
-    fontSize: 15,
-    marginTop: 5,
-    textAlign: "left",
-    backgroundColor: "transparent",
-  },
-});
 
 export default JobCards;

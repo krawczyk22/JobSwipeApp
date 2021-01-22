@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { SafeAreaView, ActivityIndicator, View } from "react-native";
 import ContainerStyles from "../assets/styles/ContainerStyles.js";
-import JobCards from "../components/JobCards.js";
+import JobCards from "../components/jobCards/JobCards.js";
 import ReturnButton from "../components/buttons/ReturnButton.js";
 
 const JobSearchScreen = ({ route, navigation }) => {

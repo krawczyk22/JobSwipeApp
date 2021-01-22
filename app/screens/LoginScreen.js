@@ -10,7 +10,7 @@ import signInWithGoogleAsync from "../auth/google.js";
 import signInWithFacebook from "../auth/facebook.js";
 
 const LoginScreen = ({ navigation }) => {
-  const [valueLogin, onChangeTextLogin] = React.useState(null);
+  const [valueEmail, onChangeTextEmail] = React.useState(null);
   const [valuePassword, onChangeTextPassword] = React.useState(null);
   const [toggleCheckbox, toggleCheckboxSet] = React.useState(false);
 
@@ -20,8 +20,8 @@ const LoginScreen = ({ navigation }) => {
 
       <TextInput
         style={ContainerStyles.textArea}
-        onChangeText={(text) => onChangeTextLogin(text)}
-        value={valueLogin}
+        onChangeText={(text) => onChangeTextEmail(text)}
+        value={valueEmail}
         textContentType="username"
         autoCapitalize="none"
         placeholderTextColor="grey"
@@ -38,15 +38,15 @@ const LoginScreen = ({ navigation }) => {
         placeholder="Enter Password"
       />
       <LoginButton
-        navigation={navigation}
-        valueLogin={valueLogin}
+        valueEmail={valueEmail}
         valuePassword={valuePassword}
+        navigation={navigation}
       />
-      <View style={ContainerStyles.boxSignup}>
+      <View style={ContainerStyles.centreBox}>
         <Text>Sign up with one of our partners</Text>
         <Text>or create an account</Text>
       </View>
-      <View style={ContainerStyles.TC}>
+      <View style={ContainerStyles.itemAlignRow}>
         <CheckBox
           checked={toggleCheckbox}
           onPress={() => toggleCheckboxSet(!toggleCheckbox)}

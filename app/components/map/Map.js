@@ -1,11 +1,11 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import MapView from "react-native-maps";
+import MapStyles from "./MapStyles.js";
 
 const Map = () => {
   return (
     <MapView
-      style={localStyles.mapStyle}
+      style={MapStyles.mapStyle}
       loadingEnabled={true}
       initialRegion={{
         //latitude: location.coords.latitude,
@@ -18,14 +18,5 @@ const Map = () => {
     ></MapView>
   );
 };
-
-const localStyles = StyleSheet.create({
-  mapStyle: {
-    width: "auto",
-    height: "30%",
-    zIndex: -1,
-    borderTopWidth: 10,
-  },
-});
 
 export default Map;

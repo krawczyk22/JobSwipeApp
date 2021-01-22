@@ -19,29 +19,13 @@ export default StyleSheet.create({
     padding: 10,
     margin: 10,
   },
-  textAreaJobSearch: {
-    height: 70,
-    width: 320,
-    borderColor: "black",
-    backgroundColor: "white",
-    borderRadius: 10,
-    borderWidth: 0,
-    marginLeft: 10,
-    padding: 10,
-    margin: 10,
-  },
-  boxSignup: {
+  centreBox: {
     justifyContent: "flex-start",
     alignItems: "center",
     margin: 10,
     paddingBottom: 40,
   },
-  TC: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  JobCheckBoxes: {
+  itemAlignRow: {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",

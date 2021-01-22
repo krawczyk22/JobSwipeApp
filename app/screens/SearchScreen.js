@@ -9,7 +9,7 @@ import {
 import { CheckBox } from "react-native-elements";
 import ContainerStyles from "../assets/styles/ContainerStyles.js";
 import TextStyles from "../assets/styles/TextStyles.js";
-import ButtonStyles from "../assets/styles/ButtonStyles.js";
+import ButtonStyles from "../components/buttons/ButtonStyles.js";
 import LogOutButton from "../components/buttons/LogOutButton.js";
 
 const SearchScreen = ({ navigation }) => {
@@ -85,7 +85,7 @@ const SearchScreen = ({ navigation }) => {
         placeholderTextColor="grey"
         placeholder="Enter Max. Salary"
       />
-      <View style={ContainerStyles.JobCheckBoxes}>
+      <View style={ContainerStyles.itemAlignRow}>
         <CheckBox
           checked={valuePermanent}
           onPress={() => onPermanent(!valuePermanent)}
@@ -105,7 +105,7 @@ const SearchScreen = ({ navigation }) => {
         />
         <Text>Temporary</Text>
       </View>
-      <View style={ContainerStyles.JobCheckBoxes}>
+      <View style={ContainerStyles.itemAlignRow}>
         <CheckBox
           checked={valueFullTime}
           onPress={() => onChangeFullTime(!valueFullTime)}
@@ -120,7 +120,7 @@ const SearchScreen = ({ navigation }) => {
         <Text>Part Time</Text>
       </View>
       <TouchableOpacity
-        style={ButtonStyles.buttonSearchMap}
+        style={ButtonStyles.buttonSearchJobs}
         activeOpacity={0.8}
         onPress={() => {
           if (checkNumberInput()) {

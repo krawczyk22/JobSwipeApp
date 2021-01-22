@@ -1,11 +1,11 @@
 import React from "react";
-import { Text, TouchableOpacity, StyleSheet } from "react-native";
-import ButtonStyles from "../../assets/styles/ButtonStyles.js";
+import { Text, TouchableOpacity } from "react-native";
+import ButtonStyles from "./ButtonStyles.js";
 
 const WelcomeButton = ({ navigation }) => {
   return (
     <TouchableOpacity
-      style={localStyles.buttonWelcome}
+      style={ButtonStyles.buttonWelcome}
       activeOpacity={0.5}
       onPress={() => navigation.push("loading")}
     >
@@ -13,18 +13,5 @@ const WelcomeButton = ({ navigation }) => {
     </TouchableOpacity>
   );
 };
-
-const localStyles = StyleSheet.create({
-  buttonWelcome: {
-    width: 150,
-    height: 150,
-    backgroundColor: "#00BCD4",
-    borderRadius: 75,
-    borderWidth: 1,
-    borderColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 
 export default WelcomeButton;

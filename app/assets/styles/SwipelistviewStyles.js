@@ -6,14 +6,6 @@ export default StyleSheet.create({
     flex: 1,
     width: "100%",
   },
-  switchContainer: {
-    flexDirection: "row",
-    marginVertical: 50,
-    flexWrap: "wrap",
-  },
-  backTextWhite: {
-    color: "#FFF",
-  },
   rowFront: {
     alignItems: "center",
     backgroundColor: "white",
@@ -23,15 +15,6 @@ export default StyleSheet.create({
     height: 50,
     width: "100%",
   },
-  rowBack: {
-    alignContent: "flex-end",
-    backgroundColor: "#DDD",
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingLeft: 15,
-    width: "100%",
-  },
   backRightBtn: {
     alignItems: "center",
     bottom: 0,
@@ -39,10 +22,6 @@ export default StyleSheet.create({
     position: "absolute",
     top: 0,
     width: 75,
-  },
-  backRightBtnLeft: {
-    backgroundColor: "blue",
-    right: 75,
   },
   backRightBtnRight: {
     backgroundColor: "red",

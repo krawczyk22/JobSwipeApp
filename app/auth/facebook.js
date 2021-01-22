@@ -35,6 +35,15 @@ const checkLoginState = (response) => {
         firebase
           .auth()
           .signInWithCredential(credential)
+          .then((result) => {
+            firebase
+              .database()
+              .ref("/users/" + result.user.uid)
+              .set({
+                gmail: result.user.email,
+                displayName: result.user.displayName,
+              });
+          })
           .catch((error) => {
             console.log(error);
           });
