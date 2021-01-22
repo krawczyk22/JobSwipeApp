@@ -8,6 +8,7 @@ import ThirdPartyButton from "../components/buttons/ThirdPartyButton.js";
 import LoginButton from "../components/buttons/LoginButton.js";
 import signInWithGoogleAsync from "../auth/google.js";
 import signInWithFacebook from "../auth/facebook.js";
+import { signInWithEmailAndPassword } from "../auth/emailPassword.js";
 
 const LoginScreen = ({ navigation }) => {
   const [valueEmail, onChangeTextEmail] = React.useState(null);
@@ -40,7 +41,9 @@ const LoginScreen = ({ navigation }) => {
       <LoginButton
         valueEmail={valueEmail}
         valuePassword={valuePassword}
-        navigation={navigation}
+        onPress={() =>
+          signInWithEmailAndPassword(valueEmail, valuePassword, navigation)
+        }
       />
       <View style={ContainerStyles.centreBox}>
         <Text>Sign up with one of our partners</Text>

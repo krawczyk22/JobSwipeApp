@@ -1,9 +1,8 @@
 import React from "react";
 import { Text, TouchableOpacity } from "react-native";
 import ButtonStyles from "./ButtonStyles.js";
-import signInWithEmailAndPassword from "../../auth/emailPassword.js";
 
-const LoginButton = ({ valueEmail, valuePassword, navigation }) => {
+const LoginButton = ({ valueEmail, valuePassword, onPress }) => {
   return (
     <TouchableOpacity
       style={
@@ -12,9 +11,7 @@ const LoginButton = ({ valueEmail, valuePassword, navigation }) => {
           : [ButtonStyles.buttonLogin, { backgroundColor: "#C4CECF" }]
       }
       activeOpacity={0.5}
-      onPress={() =>
-        signInWithEmailAndPassword(valueEmail, valuePassword, navigation)
-      }
+      onPress={onPress}
       disabled={!(valueEmail && valuePassword)}
     >
       <Text style={ButtonStyles.textInButton}>Login</Text>
