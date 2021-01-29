@@ -18,14 +18,12 @@ export const createUserWithEmailAndPassword = (email, password, valueName) => {
     });
 };
 
-export const signInWithEmailAndPassword = (email, password, navigation) => {
+export const signInWithEmailAndPassword = (email, password) => {
   firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
-      var user = userCredential.user;
-      console.log(user);
-      () => navigation.push("Jobs");
+      console.log(userCredential.user);
     })
     .catch((error) => {
       console.log(error);

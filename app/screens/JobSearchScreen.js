@@ -52,16 +52,28 @@ const JobSearchScreen = ({ route, navigation }) => {
     })
       .then((response) => response.json())
       .then((json) => {
-        /*for (let i in json.results) {
-          let [data, setTemp] = useState([]);
-          getCoordinates(json.results[i].locationName).then((result) =>
-            setTemp(result)
-          );
+        let temp = json.results;
+        for (var key in json.results) {
+          getCoordinates(json.results[key].locationName).then((coordinates) => {
+            temp[key]["lat"] = coordinates.lat;
+            temp[key]["lng"] = coordinates.lng;
+            //temp[i]["lat"] = JSON.stringify(coordinates.lat);
+            //temp[i]["lng"] = JSON.stringify(coordinates.lng);
+            console.log(temp);
+            //console.log(coordinates);
+          });
+          //console.log(temp);
+          //getCoordinates(json.results[i].locationName).then((result) =>
+          //  setTemp(result)
+          //);
           //json.results.push(data);
+          //console.log(temp[i]);
+          //console.log(json.results[i].locationName);
         }
         //console.log(json.results[0].locationName);
-        console.log(json.results);*/
-        setData(json.results);
+        //console.log(json.results);
+        setData(temp);
+        console.log(temp);
       })
       .catch((error) => console.error(error))
       .finally(() => setLoadingReed(false));

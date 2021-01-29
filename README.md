@@ -24,11 +24,7 @@ they can come back and apply for them later.
   <tr>
     <td><img src="showcase/JobSearchScreen.png" width="300"></td>
     <td><img src="showcase/JobSwipe.png" width="300"></td>
-    <td><img src="showcase/JobSwipe2.png" width="300"></td>
-  </tr>
-  <tr>
     <td><img src="showcase/Favourites.png" width="300"></td>
-    <td><img src="showcase/FavouritesOpened.png" width="300"></td>
   </tr>
   <tr>
   </tr>

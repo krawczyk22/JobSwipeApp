@@ -12,6 +12,9 @@ const WelcomeScreen = ({ navigation }) => {
         Welcome to the place where you'll find your dream job.
       </Text>
       <WelcomeButton navigation={navigation} />
+      <Text style={TextStyles.description}>
+        Swipe left to discard jobs, swipe right to save them for later!
+      </Text>
     </View>
   );
 };

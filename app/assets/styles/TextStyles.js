@@ -7,6 +7,6 @@ export default StyleSheet.create({
   },
   description: {
     fontSize: 25,
-    paddingBottom: 20,
+    padding: 20,
   },
 });

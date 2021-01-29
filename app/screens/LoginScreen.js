@@ -41,9 +41,7 @@ const LoginScreen = ({ navigation }) => {
       <LoginButton
         valueEmail={valueEmail}
         valuePassword={valuePassword}
-        onPress={() =>
-          signInWithEmailAndPassword(valueEmail, valuePassword, navigation)
-        }
+        onPress={() => signInWithEmailAndPassword(valueEmail, valuePassword)}
       />
       <View style={ContainerStyles.centreBox}>
         <Text>Sign up with one of our partners</Text>
