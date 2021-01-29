@@ -14,6 +14,7 @@ deck of cards form. Once the user selects appropriate job advertisements,
 they can come back and apply for them later.
 
 <b>YouTube link: </b> https://youtu.be/6LtXgXqPeFo
+
 ## Presentation
 
 <table style="width:100%">
