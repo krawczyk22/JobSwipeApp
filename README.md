@@ -13,7 +13,7 @@ are fetched from the Reed.co.uk API and are presented to the user in the
 deck of cards form. Once the user selects appropriate job advertisements,
 they can come back and apply for them later.
 
-<b>YouTube link: </b> https://youtu.be/6LtXgXqPeFo
+<b>YouTube link: </b> https://youtu.be/ptx-PKpxj4Q
 
 ## Presentation
 
